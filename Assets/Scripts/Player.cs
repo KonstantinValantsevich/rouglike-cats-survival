@@ -16,9 +16,9 @@ public class Player : Entity
     private void Update()
     {
         var mousePosition = Input.mousePosition;
-        var position = cameraMain.ScreenToWorldPoint(mousePosition);
-        position.z = 0;
-        SetLookRotation(position.normalized);
+        mousePosition = cameraMain.ScreenToWorldPoint(mousePosition);
+        mousePosition.z = 0;
+        SetLookRotation(mousePosition);
         
         Move(new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical")));
     }

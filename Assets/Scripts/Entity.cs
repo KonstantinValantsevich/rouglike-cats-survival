@@ -1,9 +1,12 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 public class Entity : MonoBehaviour
 {
     public float moveSpeed;
+
     private Vector3 dir;
+    public event Action<Entity> OnDead;
 
     protected void Move(Vector2 movementDirection)
     {
@@ -16,5 +19,11 @@ public class Entity : MonoBehaviour
         dir = pointToLook - transform.position;
         var angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
         transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+    }
+
+
+    private void OnDestroy()
+    {
+        OnDead?.Invoke(this);
     }
 }

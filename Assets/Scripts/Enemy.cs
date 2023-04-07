@@ -1,19 +1,19 @@
-
 using Player;
+using Projectiles;
+using UnityEngine;
 
 public class Enemy : Entity
 {
-    private IPlayerState player; // TODO: Change to interface with position
+    private IPlayerState player;
 
-    private void Start()
+    public void Init(IPlayerState player)
     {
-        player = FindObjectOfType<PlayerMovement>();
+        this.player = player;
     }
 
     private void Update()
     {
-        var playerPosition = player.Position;
-        SetLookRotation(playerPosition);
+        SetLookRotation(player.Position);
         Move(transform.right);
     }
 }

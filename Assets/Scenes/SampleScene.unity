@@ -178,7 +178,7 @@ GameObject:
   - component: {fileID: 193748094}
   - component: {fileID: 193748093}
   m_Layer: 0
-  m_Name: Enemies
+  m_Name: EnemiesSpawner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -196,9 +196,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 774c79d6cc5347b79549b2f89942830e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxEnemies: 100
-  enemiePrefab: {fileID: 1886895692819944577, guid: 006fbcd5c8bfc492e8cce88218c189eb, type: 3}
+  maxEnemies: 3
+  enemyPrefab: {fileID: 1886895692819944577, guid: 006fbcd5c8bfc492e8cce88218c189eb, type: 3}
   enemiesRoot: {fileID: 193748094}
+  spawnRingRadius: 10
 --- !u!4 &193748094
 Transform:
   m_ObjectHideFlags: 0
@@ -460,11 +461,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 625556093935185326, guid: 0daf08791d6931c419e0d06660a1fa8a, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.076046236
+      value: 0.139
       objectReference: {fileID: 0}
     - target: {fileID: 625556093935185326, guid: 0daf08791d6931c419e0d06660a1fa8a, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.038022995
+      value: 0.583
       objectReference: {fileID: 0}
     - target: {fileID: 625556093935185326, guid: 0daf08791d6931c419e0d06660a1fa8a, type: 3}
       propertyPath: m_LocalPosition.z

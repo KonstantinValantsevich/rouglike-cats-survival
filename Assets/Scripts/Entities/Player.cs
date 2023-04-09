@@ -1,10 +1,12 @@
 using Entities.EntityComponents;
+using Entities.EntityComponents.Movements;
+using Entities.Interfaces;
 using Entities.Projectiles;
 using UnityEngine;
 
-namespace Entities.Player
+namespace Entities
 {
-    public class PlayerMain : Entity, IPlayerState
+    public class Player : Entity, IPlayerState
     {
         public float cooldown = 0.25f;
 
@@ -12,28 +14,19 @@ namespace Entities.Player
 
         public Projectile bulletPrefab;
 
-        private Camera cameraMain;
-
         public Vector3 Position => transform.position;
 
         protected override void Start()
         {
             base.Start();
 
-            cameraMain = Camera.main;
+            movement = new PlayerMovement(5, transform, Camera.main);
             Shoot();
         }
 
         protected override void Update()
         {
             base.Update();
-
-            var mousePosition = Input.mousePosition;
-            mousePosition = cameraMain.ScreenToWorldPoint(mousePosition);
-            mousePosition.z = 0;
-            SetLookRotation(mousePosition);
-
-            Move(new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical")));
 
             Shoot();
         }
@@ -50,9 +43,9 @@ namespace Entities.Player
             bullet.gameObject.layer = LayerMask.NameToLayer("Player Attack");
         }
 
-        public override void PerformAttack(HealthController attackedHealthController)
+        public override void PerformHit(Health attackedHealth)
         {
-            attackedHealthController.ChangeHealth(-attackedHealthController.MaxHealth);
+            attackedHealth.ChangeHealth(-attackedHealth.MaxHealth);
         }
     }
 }

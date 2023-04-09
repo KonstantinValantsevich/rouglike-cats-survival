@@ -1,4 +1,5 @@
 ﻿using Entities.EntityComponents;
+using Entities.EntityComponents.Movements;
 using UnityEngine;
 
 namespace Entities.Projectiles
@@ -8,19 +9,14 @@ namespace Entities.Projectiles
         protected override void Start()
         {
             base.Start();
+            movement = new ForwardMovement(10, transform);
 
             Destroy(gameObject, 2.0f);
         }
 
-        protected override void Update()
+        public override void PerformHit(Health attackedHealth)
         {
-            base.Update();
-            Move(transform.right);
-        }
-
-        public override void PerformAttack(HealthController attackedHealthController)
-        {
-            attackedHealthController.ChangeHealth(-healthController.MaxHealth);
+            attackedHealth.ChangeHealth(-health.MaxHealth);
         }
     }
 }

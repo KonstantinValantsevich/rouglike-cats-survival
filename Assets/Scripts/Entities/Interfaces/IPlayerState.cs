@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Entities.Player
+namespace Entities.Interfaces
 {
     public interface IPlayerState
     {

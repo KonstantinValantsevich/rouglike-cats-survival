@@ -1,5 +1,7 @@
 using Entities.EntityComponents;
-using Entities.Player;
+using Entities.EntityComponents.Movements;
+using Entities.Interfaces;
+using Unity.VisualScripting;
 using UnityEngine;
 
 namespace Entities
@@ -13,10 +15,11 @@ namespace Entities
             this.player = player;
         }
 
-        protected override void Update()
+        protected override void Start()
         {
-            SetLookRotation(player.Position);
-            Move(transform.right);
+            base.Start();
+
+            movement = new PlayerFollowMovement(3, transform, player);
         }
 
         protected override void ColliderTouched(GameObject touchedGameObject)
@@ -31,12 +34,12 @@ namespace Entities
                 return;
             }
 
-            component.PerformAttack(healthController);
+            component.PerformHit(health);
         }
 
-        public override void PerformAttack(HealthController attackedHealthController)
+        public override void PerformHit(Health attackedHealth)
         {
-            attackedHealthController.ChangeHealth(1);
+            attackedHealth.ChangeHealth(1);
         }
     }
 }

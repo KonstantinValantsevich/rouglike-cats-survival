@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 using Entities;
-using Entities.Player;
+using Entities.Interfaces;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -22,7 +22,7 @@ namespace Spawner
 
         private void Start()
         {
-            player = FindObjectOfType<PlayerMain>();
+            player = FindObjectOfType<Player>();
             instantiatedEnemies = new HashSet<Enemy>(maxEnemies);
         }
 

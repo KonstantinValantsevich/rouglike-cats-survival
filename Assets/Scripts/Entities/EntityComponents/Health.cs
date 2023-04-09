@@ -1,8 +1,9 @@
 ﻿using System;
+using Entities.EntityComponents.Interfaces;
 
 namespace Entities.EntityComponents
 {
-    public class HealthController
+    public class Health : ITickable
     {
         public const float MinHealth = 0;
 
@@ -23,7 +24,7 @@ namespace Entities.EntityComponents
         private float currentHealthChanger;
         private readonly float maxHealth;
 
-        public HealthController(float maxHealth, float healthChanger)
+        public Health(float maxHealth, float healthChanger)
         {
             currentHealth = maxHealth;
             this.maxHealth = maxHealth;

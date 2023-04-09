@@ -57,8 +57,8 @@ namespace Spawner
             var randomCirclePosition = Random.insideUnitCircle;
             var prohibitedPart = new Vector2(prohibitedSpawnCoefficient, prohibitedSpawnCoefficient) *
                                  randomCirclePosition.normalized;
-            var spawnPosition = (randomCirclePosition + prohibitedPart) * spawnRingRadius;
-            return spawnPosition;
+            var spawnPositionOffset = (randomCirclePosition + prohibitedPart) * spawnRingRadius;
+            return player.Position + new Vector3(spawnPositionOffset.x, spawnPositionOffset.y, 0);
         }
 
         private void EnemyDestroyed(Entity entity)

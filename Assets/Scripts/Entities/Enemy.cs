@@ -20,6 +20,8 @@ namespace Entities
             base.Start();
 
             movement = new PlayerFollowMovement(3, transform, player);
+
+            UpdateTickables();
         }
 
         protected override void ColliderTouched(GameObject touchedGameObject)

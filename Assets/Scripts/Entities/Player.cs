@@ -1,4 +1,6 @@
+using System.Collections.Generic;
 using Entities.EntityComponents;
+using Entities.EntityComponents.Attacks;
 using Entities.EntityComponents.Movements;
 using Entities.Interfaces;
 using Entities.Projectiles;
@@ -8,10 +10,6 @@ namespace Entities
 {
     public class Player : Entity, IPlayerState
     {
-        public float cooldown = 0.25f;
-
-        private float lastFireTime = 0;
-
         public Projectile bulletPrefab;
 
         public Vector3 Position => transform.position;
@@ -21,26 +19,11 @@ namespace Entities
             base.Start();
 
             movement = new PlayerMovement(5, transform, Camera.main);
-            Shoot();
-        }
+            attacksController =
+                new AttacksController(new List<Attack>
+                    {new FireForwardProjectile(0.25f, new List<GameObject> {bulletPrefab.gameObject}, transform)});
 
-        protected override void Update()
-        {
-            base.Update();
-
-            Shoot();
-        }
-
-        private void Shoot()
-        {
-            if (Time.time - lastFireTime < cooldown)
-            {
-                return;
-            }
-
-            lastFireTime = Time.time;
-            var bullet = Instantiate(bulletPrefab, transform.position, transform.rotation);
-            bullet.gameObject.layer = LayerMask.NameToLayer("Player Attack");
+            UpdateTickables();
         }
 
         public override void PerformHit(Health attackedHealth)

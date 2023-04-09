@@ -1,6 +1,5 @@
 ﻿using Entities.EntityComponents;
 using Entities.EntityComponents.Movements;
-using UnityEngine;
 
 namespace Entities.Projectiles
 {
@@ -10,6 +9,8 @@ namespace Entities.Projectiles
         {
             base.Start();
             movement = new ForwardMovement(10, transform);
+
+            UpdateTickables();
 
             Destroy(gameObject, 2.0f);
         }

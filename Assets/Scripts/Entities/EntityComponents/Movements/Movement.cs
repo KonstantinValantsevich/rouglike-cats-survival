@@ -5,7 +5,9 @@ namespace Entities.EntityComponents
 {
     public abstract class Movement : ITickable
     {
-        public float movementSpeed;
+        public const float minMovementSpeed = 0;
+
+        private float movementSpeed;
         protected Transform transform;
 
         protected Movement(float movementSpeed, Transform transform)
@@ -27,6 +29,12 @@ namespace Entities.EntityComponents
             var lookDirection = pointToLook - transform.position;
             var angleToRotate = Mathf.Atan2(lookDirection.y, lookDirection.x) * Mathf.Rad2Deg;
             transform.rotation = Quaternion.AngleAxis(angleToRotate, Vector3.forward);
+        }
+
+        public void ChangeMovementSpeed(float amount)
+        {
+            movementSpeed += amount;
+            movementSpeed = Mathf.Clamp(movementSpeed, 0, movementSpeed);
         }
     }
 }

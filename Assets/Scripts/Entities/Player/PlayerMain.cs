@@ -1,13 +1,11 @@
-using Projectiles;
+using Entities.EntityComponents;
+using Entities.Projectiles;
 using UnityEngine;
 
-namespace Player
+namespace Entities.Player
 {
     public class PlayerMain : Entity, IPlayerState
     {
-        public float health;
-        public float baseDamageMultiplier;
-        public float regenMultiplier;
         public float cooldown = 0.25f;
 
         private float lastFireTime = 0;
@@ -18,14 +16,18 @@ namespace Player
 
         public Vector3 Position => transform.position;
 
-        private void Start()
+        protected override void Start()
         {
+            base.Start();
+
             cameraMain = Camera.main;
             Shoot();
         }
 
-        private void Update()
+        protected override void Update()
         {
+            base.Update();
+
             var mousePosition = Input.mousePosition;
             mousePosition = cameraMain.ScreenToWorldPoint(mousePosition);
             mousePosition.z = 0;
@@ -45,7 +47,12 @@ namespace Player
 
             lastFireTime = Time.time;
             var bullet = Instantiate(bulletPrefab, transform.position, transform.rotation);
-            bullet.wasPlayerCreated = true;
+            bullet.gameObject.layer = LayerMask.NameToLayer("Player Attack");
+        }
+
+        public override void PerformAttack(HealthController attackedHealthController)
+        {
+            attackedHealthController.ChangeHealth(-attackedHealthController.MaxHealth);
         }
     }
 }

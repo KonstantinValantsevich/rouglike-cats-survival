@@ -1,5 +1,6 @@
 using System.Collections.Generic;
-using Player;
+using Entities;
+using Entities.Player;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -11,8 +12,8 @@ namespace Spawner
         public Enemy enemyPrefab;
         public Transform enemiesRoot;
         public float spawnCooldownTime = 0.5f;
-        public int spawnRingRadius = 4;
-
+        public float spawnRingRadius = 4;
+        public float spawnProhibitedRadius = 5;
         private IPlayerState player;
 
         private HashSet<Enemy> instantiatedEnemies;
@@ -45,19 +46,24 @@ namespace Spawner
             lastEnemyInstantiated = Time.time;
             var enemy = Instantiate(enemyPrefab, ChooseSpawnPosition(), Quaternion.identity, enemiesRoot);
             enemy.Init(player);
-            enemy.OnDead += OnEnemyDead;
+            enemy.Destroyed += EnemyDestroyed;
 
             instantiatedEnemies.Add(enemy);
         }
 
         private Vector3 ChooseSpawnPosition()
         {
-            return Random.insideUnitCircle + new Vector2(0.3f, 0.3f) * spawnRingRadius;
+            var prohibitedSpawnCoefficient = (spawnProhibitedRadius + spawnRingRadius) / spawnProhibitedRadius;
+            var randomCirclePosition = Random.insideUnitCircle;
+            var prohibitedPart = new Vector2(prohibitedSpawnCoefficient, prohibitedSpawnCoefficient) *
+                                 randomCirclePosition.normalized;
+            var spawnPosition = (randomCirclePosition + prohibitedPart) * spawnRingRadius;
+            return spawnPosition;
         }
 
-        private void OnEnemyDead(Entity entity)
+        private void EnemyDestroyed(Entity entity)
         {
-            entity.OnDead -= OnEnemyDead;
+            entity.Destroyed -= EnemyDestroyed;
             instantiatedEnemies.Remove((Enemy) entity);
         }
     }

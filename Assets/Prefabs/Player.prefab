@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4837766675413414089}
   - component: {fileID: 5358605515623626125}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -96,7 +96,7 @@ GameObject:
   - component: {fileID: 625556093935185312}
   - component: {fileID: -819015458042431720}
   - component: {fileID: -7844136003715479860}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -133,9 +133,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 5
-  health: 0
-  baseDamageMultiplier: 0
-  regenMultiplier: 0
+  cooldown: 0.25
   bulletPrefab: {fileID: 6706548048016243221, guid: f388f117ca935e4449993d2b95d04205, type: 3}
 --- !u!50 &-819015458042431720
 Rigidbody2D:
@@ -184,7 +182,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2283221682821914985}
   - component: {fileID: 6871998056876767301}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Weapon
   m_TagString: Untagged
   m_Icon: {fileID: 0}

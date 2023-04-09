@@ -7,10 +7,9 @@ namespace Projectiles
     {
         public bool wasPlayerCreated;
 
-        private async void Start()
+        private void Start()
         {
-            await Task.Delay(2_000);
-            Destroy(gameObject);
+            Destroy(gameObject, 2.0f);
         }
 
         private void Update()

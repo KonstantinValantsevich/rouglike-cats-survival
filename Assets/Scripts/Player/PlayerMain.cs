@@ -1,4 +1,3 @@
-using System.Threading.Tasks;
 using Projectiles;
 using UnityEngine;
 
@@ -9,6 +8,9 @@ namespace Player
         public float health;
         public float baseDamageMultiplier;
         public float regenMultiplier;
+        public float cooldown = 0.25f;
+
+        private float lastFireTime = 0;
 
         public Projectile bulletPrefab;
 
@@ -30,16 +32,20 @@ namespace Player
             SetLookRotation(mousePosition);
 
             Move(new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical")));
+
+            Shoot();
         }
 
-        private async void Shoot()
+        private void Shoot()
         {
-            while (true)
+            if (Time.time - lastFireTime < cooldown)
             {
-                await Task.Delay(250);
-                var bullet = Instantiate(bulletPrefab, transform.position, transform.rotation);
-                bullet.wasPlayerCreated = true;
+                return;
             }
+
+            lastFireTime = Time.time;
+            var bullet = Instantiate(bulletPrefab, transform.position, transform.rotation);
+            bullet.wasPlayerCreated = true;
         }
     }
 }

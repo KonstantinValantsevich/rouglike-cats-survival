@@ -1,9 +1,6 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using Player;
 using UnityEngine;
-using UnityEngine.Serialization;
 using Random = UnityEngine.Random;
 
 namespace Spawner
@@ -13,32 +10,44 @@ namespace Spawner
         public int maxEnemies = 5;
         public Enemy enemyPrefab;
         public Transform enemiesRoot;
-
+        public float spawnCooldownTime = 0.5f;
         public int spawnRingRadius = 4;
 
         private IPlayerState player;
 
         private HashSet<Enemy> instantiatedEnemies;
 
+        private float lastEnemyInstantiated = 0;
+
         private void Start()
         {
             player = FindObjectOfType<PlayerMain>();
             instantiatedEnemies = new HashSet<Enemy>(maxEnemies);
-            StartCoroutine(InstantiateEnemiesCoroutine());
         }
 
-        private IEnumerator InstantiateEnemiesCoroutine()
+        private void Update()
         {
-            while (true)
-            {
-                var enemy = Instantiate(enemyPrefab, ChooseSpawnPosition(), Quaternion.identity, enemiesRoot);
-                enemy.Init(player);
-                enemy.OnDead += OnEnemyDead;
+            InstantiateEnemy();
+        }
 
-                instantiatedEnemies.Add(enemy);
-                yield return new WaitForSeconds(1);
-                yield return new WaitUntil(() => instantiatedEnemies.Count < maxEnemies);
+        private void InstantiateEnemy()
+        {
+            if (Time.time - lastEnemyInstantiated < spawnCooldownTime)
+            {
+                return;
             }
+
+            if (instantiatedEnemies.Count >= maxEnemies)
+            {
+                return;
+            }
+
+            lastEnemyInstantiated = Time.time;
+            var enemy = Instantiate(enemyPrefab, ChooseSpawnPosition(), Quaternion.identity, enemiesRoot);
+            enemy.Init(player);
+            enemy.OnDead += OnEnemyDead;
+
+            instantiatedEnemies.Add(enemy);
         }
 
         private Vector3 ChooseSpawnPosition()

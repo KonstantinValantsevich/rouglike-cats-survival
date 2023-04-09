@@ -199,6 +199,7 @@ MonoBehaviour:
   maxEnemies: 3
   enemyPrefab: {fileID: 1886895692819944577, guid: 006fbcd5c8bfc492e8cce88218c189eb, type: 3}
   enemiesRoot: {fileID: 193748094}
+  spawnCooldownTime: 0.5
   spawnRingRadius: 10
 --- !u!4 &193748094
 Transform:
@@ -451,6 +452,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 625556093935185312, guid: 0daf08791d6931c419e0d06660a1fa8a, type: 3}
+      propertyPath: cooldown
+      value: 0.25
+      objectReference: {fileID: 0}
     - target: {fileID: 625556093935185313, guid: 0daf08791d6931c419e0d06660a1fa8a, type: 3}
       propertyPath: m_Name
       value: Player

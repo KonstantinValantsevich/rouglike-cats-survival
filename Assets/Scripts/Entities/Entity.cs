@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Entities.Collectibles;
 using Entities.EntityComponents;
 using Entities.EntityComponents.Attacks;
 using Entities.EntityComponents.Interfaces;
@@ -14,6 +15,7 @@ namespace Entities
         protected Health health;
         protected Movement movement;
         protected AttacksController attacksController;
+        protected Inventory inventory;
 
         public float moveSpeed;
 
@@ -26,6 +28,7 @@ namespace Entities
             health = new Health(100, 0);
             movement = new NoMovement(3, transform);
             attacksController = new AttacksController(new List<Attack> {new NoAttack(0.25f, null, null)});
+            inventory = new Inventory();
 
             UpdateTickables();
 
@@ -59,12 +62,20 @@ namespace Entities
 
         protected virtual void ColliderTouched(GameObject touchedGameObject)
         {
-            if (!touchedGameObject.TryGetComponent<IAttackable>(out var component))
+            if (!touchedGameObject.TryGetComponent<Entity>(out var entity))
             {
                 return;
             }
 
-            component.PerformHit(health);
+            if (entity is IAttackable attackable)
+            {
+                attackable.PerformHit(health);
+            }
+
+            if (entity is Collectible collectible)
+            {
+                collectible.CollectItem(inventory);
+            }
         }
 
         private void OnDestroy()

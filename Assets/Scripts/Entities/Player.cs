@@ -21,7 +21,13 @@ namespace Entities
                 var cameraPosition = mainCamera.transform.position;
                 var height = mainCamera.orthographicSize;
                 var width = height * mainCamera.aspect;
-                return new Rect(cameraPosition.x, cameraPosition.y, width, height);
+                var rect = new Rect
+                {
+                    width = width,
+                    height = height,
+                    center = cameraPosition
+                };
+                return rect;
             }
         }
 

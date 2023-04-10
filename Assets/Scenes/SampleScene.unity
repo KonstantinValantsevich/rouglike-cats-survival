@@ -152,6 +152,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 64c6a67829a1f14488e0a42082ee00b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 1293663549}
 --- !u!4 &190961885
 Transform:
   m_ObjectHideFlags: 0
@@ -420,6 +421,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 625556093935185326, guid: 0daf08791d6931c419e0d06660a1fa8a, type: 3}
   m_PrefabInstance: {fileID: 625556093154540215}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1293663549 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 625556093935185312, guid: 0daf08791d6931c419e0d06660a1fa8a, type: 3}
+  m_PrefabInstance: {fileID: 625556093154540215}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: caf3d21491503be47b705016a70efbe8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1384263908
 GameObject:
   m_ObjectHideFlags: 0
@@ -604,9 +616,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   entityPrefab: {fileID: 1981524083699967505, guid: c56049c0e36b1124fb28c851aa3ed834, type: 3}
   entitiesRoot: {fileID: 1691692650}
-  maxEntities: 100
+  maxEntities: 500
   spawnCooldownTime: 0.01
-  spawnRingRadius: 2
+  spawnRingRadius: 10
 --- !u!4 &1691692650
 Transform:
   m_ObjectHideFlags: 0

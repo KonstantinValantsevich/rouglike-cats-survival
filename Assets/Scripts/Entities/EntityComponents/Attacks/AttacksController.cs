@@ -4,6 +4,7 @@ using Entities.EntityComponents.Interfaces;
 namespace Entities.EntityComponents.Attacks
 {
     public class AttacksController : ITickable
+
     {
         private List<Attack> attacks;
 

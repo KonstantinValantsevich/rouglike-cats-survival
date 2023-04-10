@@ -8,17 +8,11 @@ namespace Entities
 {
     public class Enemy : Entity
     {
-        private IPlayerState player;
-
-        public void Init(IPlayerState player)
+        public override void Initialise(IPlayerState player)
         {
-            this.player = player;
-        }
+            base.Initialise(player);
 
-        protected override void Start()
-        {
-            base.Start();
-
+            shouldKillOnFarFromPlayer = false;
             movement = new PlayerFollowMovement(3, transform, player);
 
             UpdateTickables();

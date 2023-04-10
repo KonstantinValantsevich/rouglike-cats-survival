@@ -23,12 +23,12 @@ namespace Entities.EntityComponents
         private float currentHealth;
         private float currentHealthChanger;
         private readonly float maxHealth;
+        private readonly float initialHealthChanger;
 
         public Health(float maxHealth, float healthChanger)
         {
-            currentHealth = maxHealth;
-            this.maxHealth = maxHealth;
-            currentHealthChanger = healthChanger;
+            this.maxHealth = currentHealth = maxHealth;
+            initialHealthChanger = currentHealthChanger = healthChanger;
         }
 
         public void Tick(float deltaTime)
@@ -70,6 +70,12 @@ namespace Entities.EntityComponents
         {
             currentHealthChanger += changeAmount;
             HealthChangerChanged.Invoke(changeAmount);
+        }
+
+        public void Reset()
+        {
+            currentHealth = maxHealth;
+            currentHealthChanger = initialHealthChanger;
         }
     }
 }

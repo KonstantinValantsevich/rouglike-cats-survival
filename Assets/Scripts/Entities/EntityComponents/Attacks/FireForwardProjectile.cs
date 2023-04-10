@@ -1,4 +1,6 @@
 ﻿using System.Collections.Generic;
+using Entities.Interfaces;
+using Entities.Projectiles;
 using UnityEngine;
 
 namespace Entities.EntityComponents.Attacks
@@ -14,11 +16,14 @@ namespace Entities.EntityComponents.Attacks
 
             var bullet = Object.Instantiate(attacksPrefabs[0], transform.position, transform.rotation);
             bullet.gameObject.layer = LayerMask.NameToLayer("Player Attack");
+            bullet.Initialise(player);
+            
             return true;
         }
 
-        public FireForwardProjectile(float cooldown, List<GameObject> prefabs, Transform transform) : base(cooldown,
-            prefabs, transform)
+        public FireForwardProjectile(float cooldown, List<Entity> prefabs, Transform transform, IPlayerState player)
+            : base(cooldown,
+                prefabs, transform, player)
         {
         }
     }

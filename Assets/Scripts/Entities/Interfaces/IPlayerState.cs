@@ -7,5 +7,6 @@ namespace Entities.Interfaces
         public Vector3 Position { get; }
 
         public Rect CameraRect { get; }
+        public float CameraRectCircleRadius => Mathf.Max(CameraRect.width, CameraRect.height);
     }
 }

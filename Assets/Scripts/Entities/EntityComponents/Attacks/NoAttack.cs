@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using Entities.Interfaces;
 using UnityEngine;
 
 namespace Entities.EntityComponents.Attacks
@@ -10,8 +11,8 @@ namespace Entities.EntityComponents.Attacks
             return false;
         }
 
-        public NoAttack(float cooldown, List<GameObject> prefabs, Transform transform) : base(cooldown, prefabs,
-            transform)
+        public NoAttack(float cooldown, List<Entity> prefabs, Transform transform, IPlayerState player) : base(cooldown,
+            prefabs, transform, player)
         {
         }
     }

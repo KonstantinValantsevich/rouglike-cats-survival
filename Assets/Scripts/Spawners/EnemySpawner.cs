@@ -6,7 +6,8 @@ namespace Spawners
     {
         protected override void InitialiseEntity(Enemy enemy)
         {
-            enemy.Init(player);
+            base.InitialiseEntity(enemy);
+            enemy.Initialise(player);
         }
     }
 }

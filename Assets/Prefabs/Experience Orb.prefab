@@ -114,6 +114,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 569702ab5bd941b6aa37a0b3ef6cd0d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 0
+  shouldKillOnFarFromPlayer: 1
+  distanceFromKill: 10
   spawnPriority: 11
-  experienceAmount: 7
+  experienceAmount: 2

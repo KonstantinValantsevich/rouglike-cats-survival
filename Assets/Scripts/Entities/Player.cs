@@ -19,7 +19,7 @@ namespace Entities
             get
             {
                 var cameraPosition = mainCamera.transform.position;
-                var height = mainCamera.orthographicSize;
+                var height = mainCamera.orthographicSize * 2;
                 var width = height * mainCamera.aspect;
                 var rect = new Rect
                 {
@@ -31,16 +31,17 @@ namespace Entities
             }
         }
 
+        private Rect cameraRect = Rect.zero;
         private Camera mainCamera;
 
-        protected override void Start()
+        public override void Initialise(IPlayerState player)
         {
-            base.Start();
+            base.Initialise(player);
             mainCamera = Camera.main;
             movement = new PlayerMovement(5, transform, mainCamera);
             attacksController =
                 new AttacksController(new List<Attack>
-                    {new FireForwardProjectile(0.25f, new List<GameObject> {bulletPrefab.gameObject}, transform)});
+                    {new FireForwardProjectile(0.25f, new List<Entity> {bulletPrefab}, transform, this)});
 
             UpdateTickables();
         }

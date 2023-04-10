@@ -9,6 +9,7 @@ namespace Spawners
         {
             var collectible = base.SpawnEntity();
             collectible.gameObject.layer = LayerMask.NameToLayer("Player Collectibles");
+            collectible.Initialise(player);
             return collectible;
         }
     }

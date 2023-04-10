@@ -1,7 +1,7 @@
-﻿using System.Collections.Generic;
-using Entities;
+﻿using Entities;
 using Entities.Interfaces;
 using UnityEngine;
+using UnityEngine.Pool;
 using Random = UnityEngine.Random;
 
 namespace Spawners
@@ -11,6 +11,7 @@ namespace Spawners
         public T entityPrefab;
         public Transform entitiesRoot;
 
+        private ObjectPool<T> objectPool;
 
         public int maxEntities = 5;
 
@@ -21,45 +22,56 @@ namespace Spawners
 
         private float timeLastEntitySpawned = 0;
 
-        private HashSet<T> spawnedEntities;
-
         protected virtual void Start()
         {
+            objectPool = new ObjectPool<T>(createFunc: SpawnEntity, actionOnGet: ActivateEntity,
+                actionOnRelease: DeactivateEntity, defaultCapacity: maxEntities, maxSize: maxEntities);
             player = FindObjectOfType<Player>();
-            spawnedEntities = new HashSet<T>(maxEntities);
         }
 
         private void Update()
         {
             if (CanBeSpawned())
             {
-                SpawnEntity();
+                objectPool.Get();
             }
         }
 
         protected virtual T SpawnEntity()
         {
-            var entity = Instantiate(entityPrefab, RandomPositionBehindCamera(), Quaternion.identity,
+            var entity = Instantiate(entityPrefab, Vector3.zero, Quaternion.identity,
                 entitiesRoot);
             InitialiseEntity(entity);
-            entity.Destroyed += EnemyDestroyed;
 
-            spawnedEntities.Add(entity);
+            entity.EntityKilled += ent => objectPool.Release((T) ent);
+
             return entity;
+        }
+
+        protected virtual void ActivateEntity(T entity)
+        {
+            entity.Activate();
+            InitialiseEntity(entity);
+        }
+
+        protected virtual void DeactivateEntity(T entity)
+        {
+            entity.Deactivate();
         }
 
         protected virtual void InitialiseEntity(T entity)
         {
+            entity.transform.position = RandomPositionBehindCamera();
         }
 
         protected Vector3 RandomPositionBehindCamera()
         {
             var spawnPosition = Vector3.zero;
             var cameraRect = player.CameraRect;
-            var prohibitedCircleRadius = Mathf.Max(cameraRect.width, cameraRect.height);
-            for (var i = 0; i < 10; i++)
+            var prohibitedCircleRadius = player.CameraRectCircleRadius;
+            while(true)
             {
-                spawnPosition = Random.insideUnitCircle * (prohibitedCircleRadius + spawnRingRadius);
+                spawnPosition =  cameraRect.center + Random.insideUnitCircle * (prohibitedCircleRadius + spawnRingRadius);
                 if (!cameraRect.Contains(spawnPosition))
                 {
                     break;
@@ -76,7 +88,7 @@ namespace Spawners
                 return false;
             }
 
-            if (spawnedEntities.Count >= maxEntities)
+            if (objectPool.CountActive >= maxEntities)
             {
                 return false;
             }
@@ -84,12 +96,6 @@ namespace Spawners
             timeLastEntitySpawned = Time.time;
 
             return true;
-        }
-
-        private void EnemyDestroyed(Entity entity)
-        {
-            entity.Destroyed -= EnemyDestroyed;
-            spawnedEntities.Remove((T) entity);
         }
     }
 }

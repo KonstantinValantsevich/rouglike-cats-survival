@@ -28,7 +28,7 @@ namespace Entities
             health = new Health(100, 0);
             movement = new NoMovement(3, transform);
             attacksController = new AttacksController(new List<Attack> {new NoAttack(0.25f, null, null)});
-            inventory = new Inventory();
+            inventory = new Inventory(0);
 
             UpdateTickables();
 

@@ -6,9 +6,6 @@ namespace Entities.Interfaces
     {
         public Vector3 Position { get; }
 
-        /// <summary>
-        /// Rect in world of camera view.
-        /// </summary>
-        public Rect cameraRect { get; }
+        public Rect CameraRect { get; }
     }
 }

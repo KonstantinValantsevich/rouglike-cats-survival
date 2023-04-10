@@ -14,7 +14,7 @@ namespace Entities
 
         public Vector3 Position => transform.position;
 
-        public Rect cameraRect
+        public Rect CameraRect
         {
             get
             {

@@ -201,7 +201,6 @@ MonoBehaviour:
   maxEntities: 25
   spawnCooldownTime: 0.25
   spawnRingRadius: 5
-  spawnProhibitedOffset: 1
 --- !u!4 &193748094
 Transform:
   m_ObjectHideFlags: 0
@@ -608,7 +607,6 @@ MonoBehaviour:
   maxEntities: 100
   spawnCooldownTime: 0.01
   spawnRingRadius: 2
-  spawnProhibitedOffset: 2
 --- !u!4 &1691692650
 Transform:
   m_ObjectHideFlags: 0

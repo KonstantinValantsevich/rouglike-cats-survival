@@ -1,15 +1,14 @@
 ﻿using Entities.EntityComponents;
-using UnityEngine;
 
 namespace Entities.Collectibles
 {
     public class ExperienceOrb : Collectible
     {
-        public int experienceAmount;
+        public int experienceAmount = 3;
 
         public override void CollectItem(Inventory inventory)
         {
-            Debug.Log("Collected!");
+            inventory.AddExperience(experienceAmount);
         }
     }
 }

@@ -37,7 +37,7 @@ namespace Spawners
             }
         }
 
-        protected virtual void SpawnEntity()
+        protected virtual T SpawnEntity()
         {
             var entity = Instantiate(entityPrefab, RandomPositionBehindCamera(), Quaternion.identity,
                 entitiesRoot);
@@ -45,6 +45,7 @@ namespace Spawners
             entity.Destroyed += EnemyDestroyed;
 
             spawnedEntities.Add(entity);
+            return entity;
         }
 
         protected virtual void InitialiseEntity(T entity)
@@ -54,7 +55,7 @@ namespace Spawners
         protected Vector3 RandomPositionBehindCamera()
         {
             var spawnPosition = Vector3.zero;
-            var cameraRect = player.cameraRect;
+            var cameraRect = player.CameraRect;
             var prohibitedCircleRadius = Mathf.Max(cameraRect.width, cameraRect.height);
             for (var i = 0; i < 10; i++)
             {

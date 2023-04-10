@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1733689198131277641}
   - component: {fileID: 1733689198131277640}
   - component: {fileID: 1981524083699967505}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: Experience Orb
   m_TagString: Untagged
   m_Icon: {fileID: 0}

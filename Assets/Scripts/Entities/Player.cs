@@ -4,6 +4,7 @@ using Entities.EntityComponents.Attacks;
 using Entities.EntityComponents.Movements;
 using Entities.Interfaces;
 using Entities.Projectiles;
+using UI;
 using UnityEngine;
 
 namespace Entities
@@ -11,6 +12,8 @@ namespace Entities
     public class Player : Entity, IPlayerState
     {
         public Projectile bulletPrefab;
+        public HealthBar playerHealthBar;
+        public Transform playerModel;
 
         public Vector3 Position => transform.position;
 
@@ -38,12 +41,13 @@ namespace Entities
         {
             base.Initialise(player);
             mainCamera = Camera.main;
-            movement = new PlayerMovement(5, transform, mainCamera);
+            movement = new PlayerMovement(5, transform, playerModel, mainCamera);
             attacksController =
                 new AttacksController(new List<Attack>
-                    {new FireForwardProjectile(0.25f, new List<Entity> {bulletPrefab}, transform, this)});
-
+                    {new FireForwardProjectile(0.25f, new List<Entity> {bulletPrefab}, playerModel, this)});
             UpdateTickables();
+
+            playerHealthBar.Initialise(health);
         }
 
         public override void PerformHit(Health attackedHealth)

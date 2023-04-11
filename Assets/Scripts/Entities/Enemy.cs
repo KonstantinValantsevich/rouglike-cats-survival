@@ -13,7 +13,7 @@ namespace Entities
             base.Initialise(player);
 
             shouldKillOnFarFromPlayer = false;
-            movement = new PlayerFollowMovement(3, transform, player);
+            movement = new PlayerFollowMovement(3, transform, transform, player);
 
             UpdateTickables();
         }
@@ -35,7 +35,7 @@ namespace Entities
 
         public override void PerformHit(Health attackedHealth)
         {
-            attackedHealth.ChangeHealth(1);
+            attackedHealth.ChangeHealth(-1);
         }
     }
 }

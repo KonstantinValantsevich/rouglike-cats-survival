@@ -27,6 +27,8 @@ namespace Entities
         protected Inventory inventory;
         protected IPlayerState player;
 
+        public IHealth Health => health;
+
         private List<ITickable> tickables;
 
         private bool isInvisible;
@@ -36,7 +38,7 @@ namespace Entities
             this.player = player;
 
             health = new Health(100, 0);
-            movement = new NoMovement(3, transform);
+            movement = new NoMovement(3, transform, transform);
             attacksController = new AttacksController(new List<Attack>
                 {new NoAttack(0.25f, null, null, this.player)});
             inventory = new Inventory(0);

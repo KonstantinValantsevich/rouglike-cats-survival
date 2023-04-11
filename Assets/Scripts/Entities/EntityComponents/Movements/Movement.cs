@@ -8,12 +8,14 @@ namespace Entities.EntityComponents
         public const float minMovementSpeed = 0;
 
         private float movementSpeed;
-        protected Transform transform;
+        protected Transform movementTransform;
+        protected Transform rotationTransform;
 
-        protected Movement(float movementSpeed, Transform transform)
+        protected Movement(float movementSpeed, Transform movementTransform, Transform rotationTransform)
         {
             this.movementSpeed = movementSpeed;
-            this.transform = transform;
+            this.movementTransform = movementTransform;
+            this.rotationTransform = rotationTransform;
         }
 
         public abstract void Tick(float deltaTime);
@@ -21,14 +23,14 @@ namespace Entities.EntityComponents
         protected void Move(Vector2 movementDirection)
         {
             var velocity = movementSpeed * movementDirection.normalized;
-            transform.Translate(velocity * Time.deltaTime, Space.World);
+            movementTransform.Translate(velocity * Time.deltaTime, Space.World);
         }
 
         protected void SetLookRotation(Vector3 pointToLook)
         {
-            var lookDirection = pointToLook - transform.position;
+            var lookDirection = pointToLook - rotationTransform.position;
             var angleToRotate = Mathf.Atan2(lookDirection.y, lookDirection.x) * Mathf.Rad2Deg;
-            transform.rotation = Quaternion.AngleAxis(angleToRotate, Vector3.forward);
+            rotationTransform.rotation = Quaternion.AngleAxis(angleToRotate, Vector3.forward);
         }
 
         public void ChangeMovementSpeed(float amount)

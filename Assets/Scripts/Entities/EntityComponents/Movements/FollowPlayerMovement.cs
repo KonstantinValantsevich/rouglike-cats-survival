@@ -7,8 +7,9 @@ namespace Entities.EntityComponents.Movements
     {
         private IPlayerState player;
 
-        public PlayerFollowMovement(float movementSpeed, Transform transform, IPlayerState player) : base(movementSpeed,
-            transform)
+        public PlayerFollowMovement(float movementSpeed, Transform movementTransform, Transform rotationTransform,
+            IPlayerState player) : base(
+            movementSpeed, movementTransform, rotationTransform)
         {
             this.player = player;
         }
@@ -16,7 +17,7 @@ namespace Entities.EntityComponents.Movements
         public override void Tick(float deltaTime)
         {
             SetLookRotation(player.Position);
-            Move(transform.right);
+            Move(movementTransform.right);
         }
     }
 }

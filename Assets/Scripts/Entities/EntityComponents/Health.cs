@@ -3,7 +3,8 @@ using Entities.EntityComponents.Interfaces;
 
 namespace Entities.EntityComponents
 {
-    public class Health : ITickable
+    //TODO: Change system of health change to two methods!
+    public class Health : ITickable, IHealth
     {
         public const float MinHealth = 0;
 
@@ -46,7 +47,7 @@ namespace Entities.EntityComponents
                     Healed.Invoke(amount);
                     break;
                 case < 0:
-                    Damaged.Invoke(amount);
+                    Damaged.Invoke(-amount);
                     break;
                 default:
                     return;

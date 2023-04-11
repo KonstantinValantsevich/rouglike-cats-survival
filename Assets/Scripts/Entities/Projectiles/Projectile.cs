@@ -9,7 +9,7 @@ namespace Entities.Projectiles
         public override void Initialise(IPlayerState player)
         {
             base.Initialise(player);
-            movement = new ForwardMovement(10, transform);
+            movement = new ForwardMovement(10, transform, transform);
             shouldKillOnFarFromPlayer = false;
 
             UpdateTickables();

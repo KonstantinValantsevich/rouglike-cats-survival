@@ -6,7 +6,8 @@ namespace Entities.EntityComponents.Movements
     {
         private readonly Camera camera;
 
-        public PlayerMovement(float movementSpeed, Transform transform, Camera camera) : base(movementSpeed, transform)
+        public PlayerMovement(float movementSpeed, Transform movementTransform, Transform rotationTransform,
+            Camera camera) : base(movementSpeed, movementTransform, rotationTransform)
         {
             this.camera = camera;
         }

@@ -4,7 +4,7 @@ namespace Entities.EntityComponents.Movements
 {
     public class NoMovement : Movement
     {
-        public NoMovement(float movementSpeed, Transform transform) : base(movementSpeed, transform)
+        public NoMovement(float movementSpeed, Transform movementTransform, Transform rotationTransform) : base(movementSpeed, movementTransform, rotationTransform)
         {
         }
 

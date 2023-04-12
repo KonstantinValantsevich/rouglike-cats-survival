@@ -1,6 +1,6 @@
 using Entities;
-using UI;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Application : MonoBehaviour
 {
@@ -9,5 +9,12 @@ public class Application : MonoBehaviour
     private void Start()
     {
         player.Initialise(player);
+
+        player.EntityKilled += OnPlayerKilled;
+    }
+
+    private void OnPlayerKilled(Entity player)
+    {
+        SceneManager.LoadScene("MainScene");
     }
 }

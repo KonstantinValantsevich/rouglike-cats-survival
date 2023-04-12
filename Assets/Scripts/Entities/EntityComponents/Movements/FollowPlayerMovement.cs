@@ -3,11 +3,11 @@ using UnityEngine;
 
 namespace Entities.EntityComponents.Movements
 {
-    public class PlayerFollowMovement : Movement
+    public class FollowPlayerMovement : Movement
     {
         private IPlayerState player;
 
-        public PlayerFollowMovement(float movementSpeed, Transform movementTransform, Transform rotationTransform,
+        public FollowPlayerMovement(float movementSpeed, Transform movementTransform, Transform rotationTransform,
             IPlayerState player) : base(
             movementSpeed, movementTransform, rotationTransform)
         {

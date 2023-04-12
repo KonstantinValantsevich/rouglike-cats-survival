@@ -1,4 +1,6 @@
-﻿using Entities.EntityComponents;
+﻿using System.Collections.Generic;
+using Entities.EntityComponents;
+using Entities.EntityComponents.Attacks;
 using Entities.EntityComponents.Movements;
 using Entities.Interfaces;
 
@@ -9,14 +11,20 @@ namespace Entities.Projectiles
         public override void Initialise(IPlayerState player)
         {
             base.Initialise(player);
-            movement = new ForwardMovement(10, transform, transform);
             shouldKillOnFarFromPlayer = false;
-
-            UpdateTickables();
 
             health.HealthReachedMin += () => Destroy(gameObject);
 
             Destroy(gameObject, 2.0f);
+        }
+
+        protected override void InitialiseComponents()
+        {
+            health = new Health(100, 0);
+            movement = new ForwardMovement(3, transform, transform);
+            attacksController = new AttacksController(new List<Attack>
+                { new NoAttack(0.25f, null, null, this.player) });
+            inventory = new Inventory(0);
         }
 
         public override void PerformHit(Health attackedHealth)

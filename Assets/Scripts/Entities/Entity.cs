@@ -4,11 +4,8 @@ using Entities.Collectibles;
 using Entities.EntityComponents;
 using Entities.EntityComponents.Attacks;
 using Entities.EntityComponents.Interfaces;
-using Entities.EntityComponents.Movements;
 using Entities.Interfaces;
-using Entities.Projectiles;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 namespace Entities
 {
@@ -18,13 +15,13 @@ namespace Entities
 
         public bool shouldKillOnFarFromPlayer = true;
 
-        [FormerlySerializedAs("farDistanceToKill")]
         public float distanceFromKill = 10;
 
         protected Health health;
         protected Movement movement;
         protected AttacksController attacksController;
         protected Inventory inventory;
+
         protected IPlayerState player;
 
         public IHealth Health => health;
@@ -37,35 +34,31 @@ namespace Entities
         {
             this.player = player;
 
-            health = new Health(100, 0);
-            movement = new NoMovement(3, transform, transform);
-            attacksController = new AttacksController(new List<Attack>
-                {new NoAttack(0.25f, null, null, this.player)});
-            inventory = new Inventory(0);
+            InitialiseComponents();
 
             UpdateTickables();
 
             health.HealthReachedMin += () => EntityKilled.Invoke(this);
         }
 
+        protected abstract void InitialiseComponents();
+        
         protected void UpdateTickables()
         {
-            tickables = new List<ITickable> {health, movement, attacksController};
+            tickables = new List<ITickable> { health, movement, attacksController };
         }
 
         protected virtual void Update()
         {
             var deltaTime = Time.deltaTime;
 
-            foreach (var tickable in tickables)
-            {
+            foreach (var tickable in tickables) {
                 tickable.Tick(deltaTime);
             }
 
             if (shouldKillOnFarFromPlayer && isInvisible &&
                 Vector3.Distance(player.Position, transform.position) >
-                distanceFromKill + player.CameraRectCircleRadius)
-            {
+                distanceFromKill + player.CameraRectCircleRadius) {
                 Debug.Log("Entity killed bcs invisible");
                 EntityKilled.Invoke(this);
             }
@@ -76,13 +69,11 @@ namespace Entities
             gameObject.SetActive(true);
         }
 
-
         public void Deactivate()
         {
             gameObject.SetActive(false);
             health.Reset();
         }
-
 
         private void OnCollisionEnter2D(Collision2D col)
         {
@@ -96,18 +87,15 @@ namespace Entities
 
         protected virtual void ColliderTouched(GameObject touchedGameObject)
         {
-            if (!touchedGameObject.TryGetComponent<Entity>(out var entity))
-            {
+            if (!touchedGameObject.TryGetComponent<Entity>(out var entity)) {
                 return;
             }
 
-            if (entity is IAttackable attackable)
-            {
+            if (entity is IAttackable attackable) {
                 attackable.PerformHit(health);
             }
 
-            if (entity is Collectible collectible)
-            {
+            if (entity is Collectible collectible) {
                 collectible.CollectItem(inventory);
             }
         }

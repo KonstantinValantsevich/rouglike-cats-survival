@@ -17,15 +17,12 @@ namespace Entities
 
         public Vector3 Position => transform.position;
 
-        public Rect CameraRect
-        {
-            get
-            {
+        public Rect CameraRect {
+            get {
                 var cameraPosition = mainCamera.transform.position;
                 var height = mainCamera.orthographicSize * 2;
                 var width = height * mainCamera.aspect;
-                var rect = new Rect
-                {
+                var rect = new Rect {
                     width = width,
                     height = height,
                     center = cameraPosition
@@ -41,13 +38,18 @@ namespace Entities
         {
             base.Initialise(player);
             mainCamera = Camera.main;
-            movement = new PlayerMovement(5, transform, playerModel, mainCamera);
-            attacksController =
-                new AttacksController(new List<Attack>
-                    {new FireForwardProjectile(0.25f, new List<Entity> {bulletPrefab}, playerModel, this)});
             UpdateTickables();
 
             playerHealthBar.Initialise(health);
+        }
+
+        protected override void InitialiseComponents()
+        {
+            health = new Health(100, 0);
+            movement = new PlayerMovement(5, transform, playerModel, mainCamera);
+            attacksController = new AttacksController(new List<Attack>
+                { new FireForwardProjectile(0.25f, new List<Entity> { bulletPrefab }, playerModel, this) });
+            inventory = new Inventory(0);
         }
 
         public override void PerformHit(Health attackedHealth)

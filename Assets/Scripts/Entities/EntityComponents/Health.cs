@@ -20,7 +20,6 @@ namespace Entities.EntityComponents
         public float CurrentHealthChanger => currentHealthChanger;
         public float MaxHealth => maxHealth;
 
-
         private float currentHealth;
         private float currentHealthChanger;
         private readonly float maxHealth;
@@ -41,8 +40,7 @@ namespace Entities.EntityComponents
         {
             currentHealth += amount;
 
-            switch (amount)
-            {
+            switch (amount) {
                 case > 0:
                     Healed.Invoke(amount);
                     break;
@@ -53,15 +51,13 @@ namespace Entities.EntityComponents
                     return;
             }
 
-            if (currentHealth <= 0)
-            {
+            if (currentHealth <= 0) {
                 currentHealth = 0;
                 HealthReachedMin.Invoke();
                 return;
             }
 
-            if (currentHealth >= maxHealth)
-            {
+            if (currentHealth >= maxHealth) {
                 currentHealth = maxHealth;
                 HealthReachedMax.Invoke();
             }

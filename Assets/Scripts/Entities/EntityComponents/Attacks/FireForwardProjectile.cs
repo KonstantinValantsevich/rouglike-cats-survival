@@ -1,30 +1,21 @@
-﻿using System.Collections.Generic;
-using Entities.Interfaces;
-using Entities.Projectiles;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace Entities.EntityComponents.Attacks
 {
     public class FireForwardProjectile : Attack
     {
-        public override bool PerformAttack(float deltaTime)
+        public override bool PerformAttack(float deltaTime, float baseDamage)
         {
-            if (!base.PerformAttack(deltaTime))
-            {
+            if (!base.PerformAttack(deltaTime, baseDamage)) {
                 return false;
             }
 
-            var bullet = Object.Instantiate(attacksPrefabs[0], transform.position, transform.rotation);
+            var bullet = Instantiate(attacksPrefabs[0], attackerTransform.position, attackerTransform.rotation);
             bullet.gameObject.layer = LayerMask.NameToLayer("Player Attack");
+            bullet.baseAttackDamage *= baseDamage * attackMultiplier;
             bullet.Initialise(player);
-            
-            return true;
-        }
 
-        public FireForwardProjectile(float cooldown, List<Entity> prefabs, Transform transform, IPlayerState player)
-            : base(cooldown,
-                prefabs, transform, player)
-        {
+            return true;
         }
     }
 }

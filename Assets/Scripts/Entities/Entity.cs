@@ -4,6 +4,7 @@ using Entities.Collectibles;
 using Entities.EntityComponents;
 using Entities.EntityComponents.Attacks;
 using Entities.EntityComponents.Interfaces;
+using Entities.EntityComponents.Movements;
 using Entities.Interfaces;
 using UnityEngine;
 
@@ -13,18 +14,34 @@ namespace Entities
     {
         public event Action<Entity> EntityKilled = delegate { };
 
+#region Stats Fields
+
+        [Header("Technical Settings")]
         public bool shouldKillOnFarFromPlayer = true;
+        public float distanceToBeKilled = 10;
 
-        public float distanceFromKill = 10;
+        [Header("Health Settings")]
+        public float baseHealth;
+        public float baseHealthChange;
 
-        protected Health health;
-        protected Movement movement;
-        protected AttacksController attacksController;
-        protected Inventory inventory;
+        [Header("Inventory Settings")]
+        public int baseLevel;
 
-        protected IPlayerState player;
+        [Header("Movement Settings")]
+        public float baseMovementSpeed;
 
-        public IHealth Health => health;
+        [Header("Attack Settings")]
+        public float baseAttackDamage;
+        public List<Attack> attacksList;
+
+#endregion
+
+        protected Health Health;
+        protected Movement Movement;
+        protected Attacker Attacker;
+        protected Inventory Inventory;
+
+        protected IPlayerState Player;
 
         private List<ITickable> tickables;
 
@@ -32,20 +49,27 @@ namespace Entities
 
         public virtual void Initialise(IPlayerState player)
         {
-            this.player = player;
+            Player = player;
 
             InitialiseComponents();
 
             UpdateTickables();
 
-            health.HealthReachedMin += () => EntityKilled.Invoke(this);
+            Health.HealthReachedMin += () => EntityKilled.Invoke(this);
+            Health.Damaged += amount => Debug.Log($"Entity: {name} was damaged by {amount} damage");
         }
 
-        protected abstract void InitialiseComponents();
-        
+        protected virtual void InitialiseComponents()
+        {
+            Health = new Health(baseHealth, baseHealthChange);
+            Inventory = new Inventory(baseLevel);
+            Attacker = new Attacker(attacksList, baseAttackDamage, transform, Player);
+            Movement = new NoMovement();
+        }
+
         protected void UpdateTickables()
         {
-            tickables = new List<ITickable> { health, movement, attacksController };
+            tickables = new List<ITickable> { Health, Movement, Attacker };
         }
 
         protected virtual void Update()
@@ -57,8 +81,8 @@ namespace Entities
             }
 
             if (shouldKillOnFarFromPlayer && isInvisible &&
-                Vector3.Distance(player.Position, transform.position) >
-                distanceFromKill + player.CameraRectCircleRadius) {
+                Vector3.Distance(Player.Position, transform.position) >
+                distanceToBeKilled + Player.CameraRectCircleRadius) {
                 Debug.Log("Entity killed bcs invisible");
                 EntityKilled.Invoke(this);
             }
@@ -72,7 +96,7 @@ namespace Entities
         public void Deactivate()
         {
             gameObject.SetActive(false);
-            health.Reset();
+            Health.Reset();
         }
 
         private void OnCollisionEnter2D(Collision2D col)
@@ -92,11 +116,11 @@ namespace Entities
             }
 
             if (entity is IAttackable attackable) {
-                attackable.PerformHit(health);
+                attackable.PerformHit(Health);
             }
 
             if (entity is Collectible collectible) {
-                collectible.CollectItem(inventory);
+                collectible.CollectItem(Inventory);
             }
         }
 

@@ -1,9 +1,7 @@
-using System.Collections.Generic;
 using Entities.EntityComponents;
 using Entities.EntityComponents.Attacks;
 using Entities.EntityComponents.Movements;
 using Entities.Interfaces;
-using Entities.Projectiles;
 using UI;
 using UnityEngine;
 
@@ -11,7 +9,7 @@ namespace Entities
 {
     public class Player : Entity, IPlayerState
     {
-        public Projectile bulletPrefab;
+        [Header("Player References")]
         public HealthBar playerHealthBar;
         public Transform playerModel;
 
@@ -31,25 +29,23 @@ namespace Entities
             }
         }
 
-        private Rect cameraRect = Rect.zero;
         private Camera mainCamera;
 
         public override void Initialise(IPlayerState player)
         {
-            base.Initialise(player);
             mainCamera = Camera.main;
-            UpdateTickables();
 
-            playerHealthBar.Initialise(health);
+            base.Initialise(player);
+
+            playerHealthBar.Initialise(Health);
         }
 
         protected override void InitialiseComponents()
         {
-            health = new Health(100, 0);
-            movement = new PlayerMovement(5, transform, playerModel, mainCamera);
-            attacksController = new AttacksController(new List<Attack>
-                { new FireForwardProjectile(0.25f, new List<Entity> { bulletPrefab }, playerModel, this) });
-            inventory = new Inventory(0);
+            base.InitialiseComponents();
+
+            Movement = new PlayerMovement(baseMovementSpeed, transform, playerModel, mainCamera);
+            Attacker = new Attacker(attacksList, baseAttackDamage, playerModel, Player);
         }
 
         public override void PerformHit(Health attackedHealth)

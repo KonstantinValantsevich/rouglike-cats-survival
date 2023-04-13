@@ -11,25 +11,22 @@ namespace Entities.Projectiles
         public override void Initialise(IPlayerState player)
         {
             base.Initialise(player);
-            shouldKillOnFarFromPlayer = false;
 
-            health.HealthReachedMin += () => Destroy(gameObject);
+            Health.HealthReachedMin += () => Destroy(gameObject);
 
             Destroy(gameObject, 2.0f);
         }
 
         protected override void InitialiseComponents()
         {
-            health = new Health(100, 0);
-            movement = new ForwardMovement(3, transform, transform);
-            attacksController = new AttacksController(new List<Attack>
-                { new NoAttack(0.25f, null, null, this.player) });
-            inventory = new Inventory(0);
+            base.InitialiseComponents();
+            
+            Movement = new ForwardMovement(baseMovementSpeed, transform, transform);
         }
 
         public override void PerformHit(Health attackedHealth)
         {
-            attackedHealth.ChangeHealth(-health.MaxHealth);
+            attackedHealth.ChangeHealth(-Attacker.BaseAttackDamage);
         }
     }
 }

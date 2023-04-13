@@ -10,9 +10,9 @@ namespace Entities.EntityComponents.Attacks
                 return false;
             }
 
-            var bullet = Instantiate(attacksPrefabs[0], attackerTransform.position, attackerTransform.rotation);
+            var bullet = Instantiate(AttacksPrefabs[0], attackerTransform.position, attackerTransform.rotation);
             bullet.gameObject.layer = LayerMask.NameToLayer("Player Attack");
-            bullet.baseAttackDamage *= baseDamage * attackMultiplier;
+            bullet.baseAttackDamage *= baseDamage * AttackMultiplier;
             bullet.Initialise(player);
 
             return true;

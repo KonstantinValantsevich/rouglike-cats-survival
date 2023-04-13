@@ -44,7 +44,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a1892d9cf62462b8221bd711b38c1b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackMultiplier: 5
-  attacksPrefabs:
-  - {fileID: 7752005673866490648, guid: 51dfa9dcf9de4e64aba25c03d2b6da18, type: 3}
-  cooldown: 1
+  AttackTiers:
+  - attackMultiplier: 2
+    attacksPrefabs:
+    - {fileID: 7752005673866490648, guid: a7ef91b7c7b8f3042aa074237f11add6, type: 3}
+    cooldown: 1
+  - attackMultiplier: 2
+    attacksPrefabs:
+    - {fileID: 7752005673866490648, guid: 51dfa9dcf9de4e64aba25c03d2b6da18, type: 3}
+    cooldown: 0.1
+  - attackMultiplier: 3
+    attacksPrefabs:
+    - {fileID: 7752005673866490648, guid: 84d63358d3819704d8c9d41e2e89e7a0, type: 3}
+    cooldown: 0.1

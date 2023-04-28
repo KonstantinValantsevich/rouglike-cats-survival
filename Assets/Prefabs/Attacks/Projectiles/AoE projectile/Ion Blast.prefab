@@ -9,7 +9,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 5163023491074615283, guid: da5573b6a1ee19c42b157a5c7435940d, type: 3}
       propertyPath: m_Name
-      value: Bullet
+      value: Ion Blast
       objectReference: {fileID: 0}
     - target: {fileID: 8645301900811513689, guid: da5573b6a1ee19c42b157a5c7435940d, type: 3}
       propertyPath: m_RootOrder
@@ -17,11 +17,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8645301900811513689, guid: da5573b6a1ee19c42b157a5c7435940d, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.1
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8645301900811513689, guid: da5573b6a1ee19c42b157a5c7435940d, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.1
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8645301900811513689, guid: da5573b6a1ee19c42b157a5c7435940d, type: 3}
       propertyPath: m_LocalPosition.x
@@ -124,11 +124,11 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -2006562129
+  m_SortingLayer: 2
   m_SortingOrder: 0
   m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
-  m_Color: {r: 0.9212953, g: 1, b: 0, a: 1}
+  m_Color: {r: 0, g: 0.8680749, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -138,7 +138,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &7752005673866490648
+--- !u!114 &-5089564712886813132
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -147,14 +147,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 8488845106641296623}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c9126b83ac5d4e36bc088b3137e60dbb, type: 3}
+  m_Script: {fileID: 11500000, guid: 0987975faa534adf8ebe5ce59a9b041e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   shouldKillOnFarFromPlayer: 0
-  distanceToBeKilled: 0
+  distanceToBeKilled: 10
   baseHealth: 1
   baseHealthChange: 0
   baseLevel: 0
-  baseMovementSpeed: 25
-  baseAttackDamage: 1
+  baseMovementSpeed: 6
+  baseAttackDamage: 5
   attacksList: []
+  explosionRadius: 5
+  explosionPrefab: {fileID: 6306846879119137203, guid: bf12e16e662ed45ef81104b6b71e198c, type: 3}

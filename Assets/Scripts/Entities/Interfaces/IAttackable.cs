@@ -4,6 +4,6 @@ namespace Entities.Interfaces
 {
     public interface IAttackable
     {
-        public void PerformHit(Health attackedHealth);
+        public void PerformHit(Entity attackedEntity);
     }
 }

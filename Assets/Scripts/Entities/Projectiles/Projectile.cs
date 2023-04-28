@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-using Entities.EntityComponents;
-using Entities.EntityComponents.Attacks;
+﻿using Entities.EntityComponents;
 using Entities.EntityComponents.Movements;
 using Entities.Interfaces;
 
@@ -24,9 +22,9 @@ namespace Entities.Projectiles
             Movement = new ForwardMovement(baseMovementSpeed, transform, transform);
         }
 
-        public override void PerformHit(Health attackedHealth)
+        public override void PerformHit(Entity attackedEntity)
         {
-            attackedHealth.ChangeHealth(-Attacker.BaseAttackDamage);
+            attackedEntity.Health.ChangeHealth(-Attacker.BaseAttackDamage);
         }
     }
 }

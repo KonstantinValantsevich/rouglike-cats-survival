@@ -48,9 +48,9 @@ namespace Entities
             Attacker = new Attacker(attacksList, baseAttackDamage, playerModel, Player);
         }
 
-        public override void PerformHit(Health attackedHealth)
+        public override void PerformHit(Entity attackedEntity)
         {
-            attackedHealth.ChangeHealth(-attackedHealth.MaxHealth);
+            attackedEntity.Health.ChangeHealth(-attackedEntity.Health.MaxHealth);
         }
     }
 }

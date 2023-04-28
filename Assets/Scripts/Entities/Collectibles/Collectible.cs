@@ -8,7 +8,7 @@ namespace Entities.Collectibles
         [Header("Collectibles Settings")]
         public int spawnPriority;
 
-        public override void PerformHit(Health attackedHealth)
+        public override void PerformHit(Entity attackedEntity)
         {
         }
 

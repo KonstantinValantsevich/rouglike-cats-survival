@@ -36,10 +36,10 @@ namespace Entities
 
 #endregion
 
-        protected Health Health;
-        protected Movement Movement;
-        protected Attacker Attacker;
-        protected Inventory Inventory;
+        public Health Health;
+        public Movement Movement;
+        public Attacker Attacker;
+        public Inventory Inventory;
 
         protected IPlayerState Player;
 
@@ -109,14 +109,14 @@ namespace Entities
             ColliderTouched(col.gameObject);
         }
 
-        protected virtual void ColliderTouched(GameObject touchedGameObject)
+        public virtual void ColliderTouched(GameObject touchedGameObject)
         {
             if (!touchedGameObject.TryGetComponent<Entity>(out var entity)) {
                 return;
             }
 
             if (entity is IAttackable attackable) {
-                attackable.PerformHit(Health);
+                attackable.PerformHit(this);
             }
 
             if (entity is Collectible collectible) {
@@ -134,6 +134,6 @@ namespace Entities
             isInvisible = false;
         }
 
-        public abstract void PerformHit(Health attackedHealth);
+        public abstract void PerformHit(Entity attackedEntity);
     }
 }

@@ -14,7 +14,7 @@ namespace Entities
             Movement = new FollowPlayerMovement(baseMovementSpeed, transform, transform, Player);
         }
 
-        protected override void ColliderTouched(GameObject touchedGameObject)
+        public override void ColliderTouched(GameObject touchedGameObject)
         {
             if (!touchedGameObject.TryGetComponent<IAttackable>(out var component)) {
                 return;
@@ -24,12 +24,12 @@ namespace Entities
                 return;
             }
 
-            component.PerformHit(Health);
+            component.PerformHit(this);
         }
 
-        public override void PerformHit(Health attackedHealth)
+        public override void PerformHit(Entity attackedEntity)
         {
-            attackedHealth.ChangeHealth(-Attacker.BaseAttackDamage);
+            attackedEntity.Health.ChangeHealth(-Attacker.BaseAttackDamage);
         }
     }
 }

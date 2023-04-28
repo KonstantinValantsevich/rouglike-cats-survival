@@ -123,6 +123,17 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!114 &42959044 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3526153849835271666, guid: 1c5c3c61ff830da4a9ee17008d7f4457, type: 3}
+  m_PrefabInstance: {fileID: 591974775}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 723f691fd59f44739940212da4bcfd32, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &190961883
 GameObject:
   m_ObjectHideFlags: 0
@@ -199,8 +210,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   entityPrefab: {fileID: -2109025093765913779, guid: 00884746d6cc9464dbb50c544856d0ad, type: 3}
   entitiesRoot: {fileID: 193748094}
-  maxEntities: 25
-  spawnCooldownTime: 1
+  maxEntities: 250
+  spawnCooldownTime: 0.3
   spawnRingRadius: 20
 --- !u!4 &193748094
 Transform:
@@ -308,6 +319,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 931006383}
     m_Modifications:
+    - target: {fileID: -9136825804958080037, guid: 1c5c3c61ff830da4a9ee17008d7f4457, type: 3}
+      propertyPath: attacksList.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -9136825804958080037, guid: 1c5c3c61ff830da4a9ee17008d7f4457, type: 3}
+      propertyPath: attacksList.Array.data[0]
+      value: 
+      objectReference: {fileID: 42959044}
     - target: {fileID: 6359161739079665006, guid: 1c5c3c61ff830da4a9ee17008d7f4457, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -483,7 +502,7 @@ MonoBehaviour:
   m_Intensity: 1
   m_LightVolumeIntensity: 1
   m_LightVolumeIntensityEnabled: 0
-  m_ApplyToSortingLayers: 00000000
+  m_ApplyToSortingLayers: 00000000872e8ef8af4a668869cbefa215de129e
   m_LightCookieSprite: {fileID: 0}
   m_DeprecatedPointLightCookieSprite: {fileID: 0}
   m_LightOrder: 0

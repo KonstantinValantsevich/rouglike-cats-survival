@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &764491043254645150
+--- !u!1 &2022665402747353103
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,22 +8,22 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 7239943620576477537}
-  - component: {fileID: 8278564656352771057}
-  m_Layer: 6
-  m_Name: FireForward
+  - component: {fileID: 5755712639760485236}
+  - component: {fileID: -4553689493238162537}
+  m_Layer: 0
+  m_Name: Fire enemy AoE Debuff
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &7239943620576477537
+--- !u!4 &5755712639760485236
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 764491043254645150}
+  m_GameObject: {fileID: 2022665402747353103}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -32,28 +32,25 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &8278564656352771057
+--- !u!114 &-4553689493238162537
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 764491043254645150}
+  m_GameObject: {fileID: 2022665402747353103}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4a1892d9cf62462b8221bd711b38c1b6, type: 3}
+  m_Script: {fileID: 11500000, guid: 6364f30627964e0a80453997396bcf77, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   AttackTiers:
+  - attackMultiplier: 1
+    attackPrefab: {fileID: -4482021357133190038, guid: f6a37ac7613f34b3588842349625a1bb, type: 3}
+    cooldown: 4
+  - attackMultiplier: 1
+    attackPrefab: {fileID: 4028767015911105314, guid: fed766a8e92714228b0566f3be819313, type: 3}
+    cooldown: 3
   - attackMultiplier: 2
-    attacksPrefabs:
-    - {fileID: 7752005673866490648, guid: a7ef91b7c7b8f3042aa074237f11add6, type: 3}
-    cooldown: 1
-  - attackMultiplier: 2
-    attacksPrefabs:
-    - {fileID: 7752005673866490648, guid: 51dfa9dcf9de4e64aba25c03d2b6da18, type: 3}
-    cooldown: 0.1
-  - attackMultiplier: 3
-    attacksPrefabs:
-    - {fileID: 7752005673866490648, guid: 84d63358d3819704d8c9d41e2e89e7a0, type: 3}
-    cooldown: 0.1
+    attackPrefab: {fileID: 1827391037014954941, guid: ad4a0278ebdac4a1aac954ebbb8b3c53, type: 3}
+    cooldown: 2

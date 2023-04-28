@@ -9,7 +9,7 @@ namespace Entities.EntityComponents.Attacks
     public class AttackTierConfig
     {
         public float attackMultiplier;
-        public List<Entity> attacksPrefabs;
+        public Entity attackPrefab;
         public float cooldown;
     }
 
@@ -20,7 +20,7 @@ namespace Entities.EntityComponents.Attacks
         protected IPlayerState player;
 
         protected float AttackMultiplier;
-        protected List<Entity> AttacksPrefabs;
+        protected Entity AttackPrefab;
         private float cooldown;
 
         private float timePerformed;
@@ -54,18 +54,27 @@ namespace Entities.EntityComponents.Attacks
             var attackSettings = AttackTiers[currentAttackTier - 1];
             cooldown = attackSettings.cooldown;
             AttackMultiplier = attackSettings.attackMultiplier;
-            AttacksPrefabs = attackSettings.attacksPrefabs;
+            AttackPrefab = attackSettings.attackPrefab;
         }
 
-        public virtual bool PerformAttack(float deltaTime, float baseDamage)
+        public abstract void PerformAttack(float deltaTime, float baseDamage);
+
+        protected virtual void InitialiseBullet(Entity bullet, float baseDamage)
+        {
+            bullet.gameObject.layer = LayerMask.NameToLayer("Player Attack");
+            bullet.baseAttackDamage *= baseDamage * AttackMultiplier;
+            bullet.Initialise(player);
+        }
+        
+        protected bool Cooldown(float deltaTime)
         {
             timeElapsed += deltaTime;
             if (timeElapsed - timePerformed < cooldown) {
-                return false;
+                return true;
             }
 
             timePerformed = timeElapsed;
-            return true;
+            return false;
         }
     }
 }

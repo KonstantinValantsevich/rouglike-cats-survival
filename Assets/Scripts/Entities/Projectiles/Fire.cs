@@ -2,16 +2,17 @@ using Entities.EntityComponents.Movements;
 
 namespace Entities.Projectiles
 {
-    public class Torch : Entity
+    public class Fire : Entity
     {
         public float rotationSpeed;
         public float rotationAngle;
+        public float cyclesCount = 1;
 
         protected override void InitialiseComponents()
         {
             base.InitialiseComponents();
             Movement = new RotationMovement(rotationAngle, baseMovementSpeed, rotationSpeed, transform, transform);
-            Destroy(gameObject, rotationAngle / rotationSpeed);
+            Destroy(gameObject, rotationAngle / rotationSpeed * cyclesCount);
         }
 
         public override void PerformHit(Entity attackedEntity)

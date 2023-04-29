@@ -48,3 +48,9 @@ MonoBehaviour:
   - attackMultiplier: 3
     attackPrefab: {fileID: -7892259703002085980, guid: e503df3bc37ea436e816b8f10de33c35, type: 3}
     cooldown: 1
+  - attackMultiplier: 4
+    attackPrefab: {fileID: -7892259703002085980, guid: c8bc518b9bc1f984da3efcb0e25ce173, type: 3}
+    cooldown: 3
+  - attackMultiplier: 7
+    attackPrefab: {fileID: 873398005563413004, guid: a62b4f4a8f151e64ab504f590272c18b, type: 3}
+    cooldown: 5

@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 
 namespace Entities.EntityComponents.Attacks
@@ -8,7 +7,7 @@ namespace Entities.EntityComponents.Attacks
         private GameObject playerMock;
         private void Awake()
         {
-            playerMock = new GameObject();
+            playerMock = new GameObject("Player Mock");
         }
 
         private void Update()

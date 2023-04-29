@@ -50,6 +50,9 @@ TagManager:
   - name: Attacks
     uniqueID: 2288405167
     locked: 0
+  - name: Player
+    uniqueID: 2739456989
+    locked: 0
   - name: VFX
     uniqueID: 4170067591
     locked: 0

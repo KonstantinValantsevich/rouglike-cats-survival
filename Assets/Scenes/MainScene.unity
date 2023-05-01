@@ -200,7 +200,7 @@ MonoBehaviour:
   entityPrefab: {fileID: -2109025093765913779, guid: 00884746d6cc9464dbb50c544856d0ad, type: 3}
   entitiesRoot: {fileID: 193748094}
   maxEntities: 250
-  spawnCooldownTime: 0.3
+  spawnCooldownTime: 0.1
   spawnRingRadius: 20
 --- !u!4 &193748094
 Transform:
@@ -760,7 +760,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1691692649
 MonoBehaviour:
   m_ObjectHideFlags: 0

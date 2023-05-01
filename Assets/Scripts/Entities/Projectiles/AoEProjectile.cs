@@ -9,12 +9,20 @@ namespace Entities.Projectiles
         public float explosionDamageMultiplier = 0.1f;
         public GameObject explosionPrefab;
         public float explosionTime = 0.5f;
-        
+
         private void OnDestroy()
         {
+            if (explosionRadius == 0) {
+                return;
+            }
+
             var hitList = Physics2D.OverlapCircleAll(transform.position, explosionRadius,
                 LayerMask.GetMask("Enemy"));
-            
+
+            if (hitList.Length == 0) {
+                return;
+            }
+
             foreach (var hit in hitList) {
                 Explode(hit.GetComponent<Enemy>());
             }

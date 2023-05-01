@@ -1,0 +1,56 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &6369755538840340760
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 126510439928672107}
+  - component: {fileID: -6835042422187908573}
+  m_Layer: 0
+  m_Name: Airstrike Attack
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &126510439928672107
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6369755538840340760}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &-6835042422187908573
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6369755538840340760}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4a1892d9cf62462b8221bd711b38c1b6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AttackTiers:
+  - attackMultiplier: 5
+    attackPrefab: {fileID: 8971376915321487010, guid: d0ec10d89a586ec43b2110712f833bb1, type: 3}
+    cooldown: 3
+  - attackMultiplier: 5
+    attackPrefab: {fileID: 8971376915321487010, guid: 8ab498e8c6fa7104393bcf2eb1e85728, type: 3}
+    cooldown: 1
+  - attackMultiplier: 5
+    attackPrefab: {fileID: 8971376915321487010, guid: 7574088e29a86fb4b85f523e5d54e471, type: 3}
+    cooldown: 3

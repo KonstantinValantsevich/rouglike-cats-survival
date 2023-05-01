@@ -24,6 +24,7 @@ namespace Entities.EntityComponents
         private float currentHealthChanger;
         private readonly float maxHealth;
         private readonly float initialHealthChanger;
+        private bool isInvincible;
 
         public Health(float maxHealth, float healthChanger)
         {
@@ -38,6 +39,9 @@ namespace Entities.EntityComponents
 
         public void ChangeHealth(float amount)
         {
+            if (isInvincible) {
+                return;
+            }
             currentHealth += amount;
 
             switch (amount) {
@@ -53,6 +57,7 @@ namespace Entities.EntityComponents
 
             if (currentHealth <= 0) {
                 currentHealth = 0;
+                isInvincible = true;
                 HealthReachedMin.Invoke();
                 return;
             }
@@ -73,6 +78,7 @@ namespace Entities.EntityComponents
         {
             currentHealth = maxHealth;
             currentHealthChanger = initialHealthChanger;
+            isInvincible = false;
         }
     }
 }

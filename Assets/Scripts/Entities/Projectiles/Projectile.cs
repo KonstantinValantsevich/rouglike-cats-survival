@@ -1,5 +1,4 @@
-﻿using Entities.EntityComponents;
-using Entities.EntityComponents.Movements;
+﻿using Entities.EntityComponents.Movements;
 using Entities.Interfaces;
 
 namespace Entities.Projectiles
@@ -11,14 +10,18 @@ namespace Entities.Projectiles
             base.Initialise(player);
 
             Health.HealthReachedMin += () => Destroy(gameObject);
+            KillOnTime();
+        }
 
+        protected virtual void KillOnTime()
+        {
             Destroy(gameObject, 2.0f);
         }
 
         protected override void InitialiseComponents()
         {
             base.InitialiseComponents();
-            
+
             Movement = new ForwardMovement(baseMovementSpeed, transform, transform);
         }
 

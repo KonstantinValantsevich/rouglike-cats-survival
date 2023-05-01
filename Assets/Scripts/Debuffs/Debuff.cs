@@ -1,7 +1,10 @@
 using System;
+using System.Threading.Tasks;
 using DG.Tweening;
 using Entities;
 using Entities.EntityComponents.Movements;
+using UnityEngine;
+using Object = UnityEngine.Object;
 
 namespace Debuffs
 {
@@ -11,7 +14,7 @@ namespace Debuffs
         public float value;
         public DebuffEnum debuff;
     }
-    
+
     public abstract class Debuff
     {
         public float value;
@@ -25,7 +28,33 @@ namespace Debuffs
             entity.Movement.ChangeMovementSpeed(-value);
         }
     }
-    
+
+    public class GravityDebuff : Debuff
+    {
+        public override async void ApplyDebuff(Entity entity)
+        {
+            GameObject explosion = null;
+            for (int i = 0; i < 10 && explosion == null; i++) {
+                await Task.Yield();
+                explosion = GameObject.FindWithTag("Gravity Explosion");
+            }
+            if (explosion == null) {
+                Debug.LogWarning("explosion is null");
+                return;
+            }
+            var prevMovement = entity.Movement;
+            entity.Movement = new FollowTargetMovement(explosion.transform, entity.baseMovementSpeed * value,
+                entity.transform,
+                entity.transform);
+            DOVirtual.DelayedCall(value, () => {
+                if (entity == null) {
+                    return;
+                }
+                entity.Movement = prevMovement;
+            });
+        }
+    }
+
     public class DamageDebuff : Debuff
     {
         public override void ApplyDebuff(Entity entity)
@@ -33,16 +62,13 @@ namespace Debuffs
             entity.Health.AddHealthChanger(-value);
         }
     }
-    
+
     public class StunDebuff : Debuff
     {
         public override void ApplyDebuff(Entity entity)
         {
             var previousMovement = entity.Movement;
             DOVirtual.DelayedCall(value, () => {
-                if (entity == null) {
-                    return;
-                }
                 entity.Movement = previousMovement;
             }).OnStart(() => entity.Movement = new NoMovement());
         }
@@ -52,7 +78,8 @@ namespace Debuffs
     {
         Slowdown,
         DamageDebuff,
-        Stun
+        Stun,
+        Gravity
     }
 
     public static class DebuffExtension
@@ -63,6 +90,7 @@ namespace Debuffs
                 DebuffEnum.Slowdown => new SlowdownDebuff { value = debuff.value },
                 DebuffEnum.DamageDebuff => new DamageDebuff { value = debuff.value },
                 DebuffEnum.Stun => new StunDebuff { value = debuff.value },
+                DebuffEnum.Gravity => new GravityDebuff() { value = debuff.value },
                 _ => throw new ArgumentOutOfRangeException(nameof(debuff), debuff, null)
             };
         }

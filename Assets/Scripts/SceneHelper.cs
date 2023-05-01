@@ -22,9 +22,15 @@ public class SceneHelper
         }
         return closestEnemy;
     }
-    
+
+    private static readonly Camera camera = Camera.main;
+
     public static Enemy FindRandomEnemy()
     {
-        return Object.FindObjectOfType<Enemy>();
+        var enemy = Object.FindObjectsOfType<Enemy>();
+        return (from e in enemy
+            let pos = camera.WorldToViewportPoint(e.transform.position)
+            where pos.x is >= 0 and <= 1 && pos.y is >= 0 and <= 1
+            select e).FirstOrDefault();
     }
 }

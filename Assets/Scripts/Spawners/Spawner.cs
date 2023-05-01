@@ -41,6 +41,8 @@ namespace Spawners
         {
             var entity = Instantiate(entityPrefab, Vector3.zero, Quaternion.identity,
                 entitiesRoot);
+            entity.Initialise(player);
+
             InitialiseEntity(entity);
 
             entity.EntityKilled += ent => objectPool.Release((T) ent);

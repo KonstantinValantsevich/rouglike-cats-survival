@@ -1,9 +1,12 @@
+using System;
+using System.Linq;
 using Entities.EntityComponents;
 using Entities.EntityComponents.Attacks;
 using Entities.EntityComponents.Movements;
 using Entities.Interfaces;
 using UI;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace Entities
 {
@@ -13,6 +16,8 @@ namespace Entities
         public HealthBar playerHealthBar;
         public Transform playerModel;
 
+        [Header("UI")]
+        public LevelUpScreen levelUpScreen;
         public Vector3 Position => transform.position;
 
         public Rect CameraRect {
@@ -38,6 +43,7 @@ namespace Entities
             base.Initialise(player);
 
             playerHealthBar.Initialise(Health);
+            levelUpScreen.AbilitieChosen += Attacker.AddAttack;
         }
 
         protected override void InitialiseComponents()
@@ -46,6 +52,17 @@ namespace Entities
 
             Movement = new PlayerMovement(baseMovementSpeed, transform, playerModel, mainCamera);
             Attacker = new Attacker(attacksList, baseAttackDamage, playerModel, Player);
+
+            Inventory.levelIncreased += OnLevelUp;
+        }
+
+//TODO: Dynamic up to 4 buttons
+        private void OnLevelUp()
+        {
+            var rng = new System.Random();
+            var attacksToGet = Attacker.availibleAttacks.Select(pair => pair.Key).OrderBy(l => rng.Next()).ToList();
+            Time.timeScale = 0;
+            levelUpScreen.Initialize(attacksToGet.GetRange(0, 4));
         }
 
         public override void PerformHit(Entity attackedEntity)

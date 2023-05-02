@@ -12,9 +12,13 @@ public class LevelUpScreen : MonoBehaviour
 
     public void Initialize(List<string> abilitiesNames)
     {
+        for (int i = 0; i < 4; i++) {
+            buttons[i].transform.parent.parent.gameObject.SetActive(false);
+        }
         abillitiesToChoose = abilitiesNames;
-        for (var i = 0; i < 4; i++) {
+        for (var i = 0; i < abilitiesNames.Count; i++) {
             buttons[i].text = abilitiesNames[i];
+            buttons[i].transform.parent.parent.gameObject.SetActive(true);
         }
         gameObject.SetActive(true);
     }
@@ -25,5 +29,8 @@ public class LevelUpScreen : MonoBehaviour
         Time.timeScale = 1;
         AbilitieChosen.Invoke(abillitiesToChoose[ability]);
         gameObject.SetActive(false);
+        for (int i = 0; i < 4; i++) {
+            buttons[i].transform.parent.parent.gameObject.SetActive(false);
+        }
     }
 }

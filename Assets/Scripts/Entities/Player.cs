@@ -62,7 +62,7 @@ namespace Entities
             var rng = new System.Random();
             var attacksToGet = Attacker.availibleAttacks.Select(pair => pair.Key).OrderBy(l => rng.Next()).ToList();
             Time.timeScale = 0;
-            levelUpScreen.Initialize(attacksToGet.GetRange(0, 4));
+            levelUpScreen.Initialize(attacksToGet.GetRange(0, Math.Min(attacksToGet.Count, 4)));
         }
 
         public override void PerformHit(Entity attackedEntity)

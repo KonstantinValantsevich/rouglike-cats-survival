@@ -1,4 +1,7 @@
-﻿using UnityEngine;
+﻿using System;
+using System.Collections.Generic;
+using Entities.Collectibles;
+using UnityEngine;
 
 namespace Entities.EntityComponents
 {
@@ -6,28 +9,36 @@ namespace Entities.EntityComponents
     {
         private int level;
         private int experienceLeftToNextLevel;
+        public HashSet<ArtefactType> artefacts = new HashSet<ArtefactType>();
+        public event Action<ArtefactType> artefactCollected = delegate { };
+        public event Action levelIncreased = delegate { };
 
         public Inventory(int level)
         {
             Level = level;
         }
 
-        public int Level
-        {
+        public int Level {
             get => level;
-            set
-            {
+            private set {
                 level = value;
                 experienceLeftToNextLevel = GetExperienceToNextLevel(level);
             }
+        }
+
+        public void CollectArtefact(ArtefactType artefactType)
+        {
+            artefacts.Add(artefactType);
+            artefactCollected.Invoke(artefactType);
+            Debug.Log($"Artefact collected:{artefactType}");
         }
 
         public void AddExperience(int experienceAmount)
         {
             experienceLeftToNextLevel -= experienceAmount;
 
-            if (experienceLeftToNextLevel <= 0)
-            {
+            while (experienceLeftToNextLevel <= 0) {
+                levelIncreased.Invoke();
                 level++;
                 experienceLeftToNextLevel += GetExperienceToNextLevel(level);
                 Debug.Log($"Level increased: {level}");
@@ -40,8 +51,7 @@ namespace Entities.EntityComponents
 
             var experienceToNextLevel = GetExperienceToNextLevel(level);
 
-            if (experienceLeftToNextLevel >= experienceToNextLevel)
-            {
+            if (experienceLeftToNextLevel >= experienceToNextLevel) {
                 level--;
                 experienceLeftToNextLevel -= experienceToNextLevel;
             }

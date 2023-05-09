@@ -17,15 +17,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8645301900811513689, guid: da5573b6a1ee19c42b157a5c7435940d, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8645301900811513689, guid: da5573b6a1ee19c42b157a5c7435940d, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8645301900811513689, guid: da5573b6a1ee19c42b157a5c7435940d, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8645301900811513689, guid: da5573b6a1ee19c42b157a5c7435940d, type: 3}
       propertyPath: m_LocalPosition.x
@@ -93,7 +93,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Radius: 0.25
 --- !u!212 &8468123165726101714
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -133,10 +133,10 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -2006562129
-  m_SortingLayer: 2
+  m_SortingLayer: 3
   m_SortingOrder: 0
-  m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
-  m_Color: {r: 0.3584906, g: 0.3584906, b: 0.3584906, a: 1}
+  m_Sprite: {fileID: 1518131116, guid: 9e95106d40cf344d1871521a19a7d0cf, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -167,4 +167,6 @@ MonoBehaviour:
   baseAttackDamage: 5
   attacksList: []
   explosionRadius: 1.5
+  explosionDamageMultiplier: 0.1
   explosionPrefab: {fileID: 6306846879119137203, guid: e9e013525300b404c978cef83cfe2e3f, type: 3}
+  explosionTime: 0.5

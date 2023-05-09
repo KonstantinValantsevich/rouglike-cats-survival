@@ -200,7 +200,7 @@ MonoBehaviour:
   entityPrefab: {fileID: -2109025093765913779, guid: 00884746d6cc9464dbb50c544856d0ad, type: 3}
   entitiesRoot: {fileID: 193748094}
   maxEntities: 100
-  spawnCooldownTime: 0.1
+  spawnCooldownTime: 1
   spawnRingRadius: 20
 --- !u!4 &193748094
 Transform:
@@ -332,8 +332,8 @@ MonoBehaviour:
   entityPrefab: {fileID: 1925952269727873820, guid: 5d1de065996e6fe48b2895f5603af41e, type: 3}
   entitiesRoot: {fileID: 491980779}
   maxEntities: 30
-  spawnCooldownTime: 10
-  spawnRingRadius: 50
+  spawnCooldownTime: 1
+  spawnRingRadius: 1
 --- !u!4 &513674380 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6359161739079665006, guid: 1c5c3c61ff830da4a9ee17008d7f4457, type: 3}
@@ -361,6 +361,18 @@ PrefabInstance:
       propertyPath: levelUpScreen
       value: 
       objectReference: {fileID: 2039016748}
+    - target: {fileID: 575861546, guid: 1c5c3c61ff830da4a9ee17008d7f4457, type: 3}
+      propertyPath: m_Size.y
+      value: 1.6997731
+      objectReference: {fileID: 0}
+    - target: {fileID: 575861546, guid: 1c5c3c61ff830da4a9ee17008d7f4457, type: 3}
+      propertyPath: m_Offset.y
+      value: -0.023232818
+      objectReference: {fileID: 0}
+    - target: {fileID: 3677007156100911652, guid: 1c5c3c61ff830da4a9ee17008d7f4457, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0.129
+      objectReference: {fileID: 0}
     - target: {fileID: 5428586279088842805, guid: 1c5c3c61ff830da4a9ee17008d7f4457, type: 3}
       propertyPath: m_FlipX
       value: 0
@@ -413,9 +425,41 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6726538371101762291, guid: 1c5c3c61ff830da4a9ee17008d7f4457, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6726538371101762291, guid: 1c5c3c61ff830da4a9ee17008d7f4457, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6726538371101762291, guid: 1c5c3c61ff830da4a9ee17008d7f4457, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6726538371101762291, guid: 1c5c3c61ff830da4a9ee17008d7f4457, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6726538371101762291, guid: 1c5c3c61ff830da4a9ee17008d7f4457, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 1.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6726538371101762291, guid: 1c5c3c61ff830da4a9ee17008d7f4457, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0.19999993
+      objectReference: {fileID: 0}
+    - target: {fileID: 6726538371101762291, guid: 1c5c3c61ff830da4a9ee17008d7f4457, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7502065883079478724, guid: 1c5c3c61ff830da4a9ee17008d7f4457, type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 8697913489630748190, guid: 1c5c3c61ff830da4a9ee17008d7f4457, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1c5c3c61ff830da4a9ee17008d7f4457, type: 3}
@@ -775,7 +819,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 7
+  orthographic size: 5
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
@@ -894,7 +938,7 @@ MonoBehaviour:
   m_Follow: {fileID: 513674380}
   m_Lens:
     FieldOfView: 60
-    OrthographicSize: 7
+    OrthographicSize: 5
     NearClipPlane: 0.3
     FarClipPlane: 1000
     Dutch: 0

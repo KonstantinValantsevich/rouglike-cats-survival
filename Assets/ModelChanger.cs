@@ -32,7 +32,7 @@ public class ModelChanger : MonoBehaviour
 
         if (Between(rotation, 247.5F, 292.5F)) {
             bodyRenderer.sprite = bodies[BodyType.Front];
-            bodyRenderer.flipX = true;
+            bodyRenderer.flipX = false;
         }
         else if (Between(rotation, 292.5F, 0)) {
             bodyRenderer.sprite = bodies[BodyType.Profile];

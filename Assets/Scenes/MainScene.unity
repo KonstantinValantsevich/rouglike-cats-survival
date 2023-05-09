@@ -199,7 +199,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   entityPrefab: {fileID: -2109025093765913779, guid: 00884746d6cc9464dbb50c544856d0ad, type: 3}
   entitiesRoot: {fileID: 193748094}
-  maxEntities: 250
+  maxEntities: 100
   spawnCooldownTime: 0.1
   spawnRingRadius: 20
 --- !u!4 &193748094
@@ -361,6 +361,14 @@ PrefabInstance:
       propertyPath: levelUpScreen
       value: 
       objectReference: {fileID: 2039016748}
+    - target: {fileID: 5428586279088842805, guid: 1c5c3c61ff830da4a9ee17008d7f4457, type: 3}
+      propertyPath: m_FlipX
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5428586279088842805, guid: 1c5c3c61ff830da4a9ee17008d7f4457, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 1789377999, guid: 92ec1288e80104b3bb3e5f7fbf050cf8, type: 3}
     - target: {fileID: 6359161739079665006, guid: 1c5c3c61ff830da4a9ee17008d7f4457, type: 3}
       propertyPath: m_RootOrder
       value: 0

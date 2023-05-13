@@ -63,7 +63,7 @@ namespace Entities
         {
             Health = new Health(baseHealth, baseHealthChange);
             Inventory = new Inventory(baseLevel);
-            Attacker = new Attacker(attacksList, baseAttackDamage, transform, Player);
+            Attacker = new Attacker(attacksList, new List<Attack>(), baseAttackDamage, transform, Player);
             Movement = new NoMovement();
         }
 

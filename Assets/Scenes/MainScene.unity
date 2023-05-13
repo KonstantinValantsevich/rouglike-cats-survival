@@ -153,6 +153,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 513674381}
+  boss: {fileID: 4746126591579796629, guid: 12e819c2f3e884737bb5ff6796608bb7, type: 3}
+  enemySpawner: {fileID: 193748093}
 --- !u!4 &190961885
 Transform:
   m_ObjectHideFlags: 0
@@ -199,7 +201,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   entityPrefab: {fileID: -2109025093765913779, guid: 00884746d6cc9464dbb50c544856d0ad, type: 3}
   entitiesRoot: {fileID: 193748094}
-  maxEntities: 100
+  maxEntities: 0
   spawnCooldownTime: 1
   spawnRingRadius: 20
 --- !u!4 &193748094
@@ -381,6 +383,18 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 1789377999, guid: 92ec1288e80104b3bb3e5f7fbf050cf8, type: 3}
+    - target: {fileID: 6338336874473468786, guid: 1c5c3c61ff830da4a9ee17008d7f4457, type: 3}
+      propertyPath: m_BodyType
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6338336874473468786, guid: 1c5c3c61ff830da4a9ee17008d7f4457, type: 3}
+      propertyPath: m_Simulated
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6338336874473468786, guid: 1c5c3c61ff830da4a9ee17008d7f4457, type: 3}
+      propertyPath: m_Constraints
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 6359161739079665006, guid: 1c5c3c61ff830da4a9ee17008d7f4457, type: 3}
       propertyPath: m_RootOrder
       value: 0

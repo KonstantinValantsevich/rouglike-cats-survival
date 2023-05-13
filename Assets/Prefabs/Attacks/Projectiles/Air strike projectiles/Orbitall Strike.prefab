@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7221935158340437777}
   - component: {fileID: 8971376915321487010}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Orbitall Strike
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -74,7 +74,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2886059142640813435}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Model
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -107,7 +107,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3680699795945677597}
   - component: {fileID: 4837181531263704386}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Hexagon Flat-Top (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}

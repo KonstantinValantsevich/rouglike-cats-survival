@@ -5,7 +5,7 @@ namespace Entities.EntityComponents.Movements
 {
     public class FollowPlayerMovement : Movement
     {
-        private IPlayerState player;
+        protected IPlayerState player;
 
         public FollowPlayerMovement(float movementSpeed, Transform movementTransform, Transform rotationTransform,
             IPlayerState player) : base(

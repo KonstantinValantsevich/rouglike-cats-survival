@@ -7,8 +7,6 @@ namespace Entities
 {
     public class Enemy : Entity
     {
-        public SpriteRenderer renderer;
-
         protected override void InitialiseComponents()
         {
             base.InitialiseComponents();

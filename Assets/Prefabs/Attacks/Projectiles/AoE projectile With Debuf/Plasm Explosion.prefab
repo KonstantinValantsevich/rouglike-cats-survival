@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4375583323985434622}
   - component: {fileID: 5318157047150161259}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Plasm Explosion
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -71,7 +71,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -124899705
-  m_SortingLayer: 4
+  m_SortingLayer: 5
   m_SortingOrder: 0
   m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
   m_Color: {r: 0.98039216, g: 0.94257206, b: 0, a: 0.8784314}

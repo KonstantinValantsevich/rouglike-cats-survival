@@ -61,7 +61,6 @@ namespace Entities.EntityComponents.Attacks
 
         protected virtual void InitialiseBullet(Entity bullet, float baseDamage)
         {
-            bullet.gameObject.layer = LayerMask.NameToLayer("Player Attack");
             bullet.baseAttackDamage *= baseDamage * AttackMultiplier;
             bullet.Initialise(player);
         }

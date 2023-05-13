@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &6770887216173597140
+--- !u!1 &6709356953383657743
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,22 +8,22 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 8461414372917405196}
-  - component: {fileID: -6006906755918979746}
-  m_Layer: 8
-  m_Name: Smoke Bomb
+  - component: {fileID: 3643787293168829361}
+  - component: {fileID: -3314072743555320011}
+  m_Layer: 0
+  m_Name: Attack 1(Circle)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &8461414372917405196
+--- !u!4 &3643787293168829361
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6770887216173597140}
+  m_GameObject: {fileID: 6709356953383657743}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -32,32 +32,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &-6006906755918979746
+--- !u!114 &-3314072743555320011
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6770887216173597140}
+  m_GameObject: {fileID: 6709356953383657743}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 42c9486daccc42acbfcd4421392cb91c, type: 3}
+  m_Script: {fileID: 11500000, guid: c0270746749d4fad88d842ed28435bc9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shouldKillOnFarFromPlayer: 1
-  distanceToBeKilled: 10
-  baseHealth: 0
-  baseHealthChange: 0
-  baseLevel: 0
-  baseMovementSpeed: 0
-  baseAttackDamage: 1
-  attacksList: []
-  explosionRadius: 50
-  explosionDamageMultiplier: 1
-  explosionPrefab: {fileID: 1311215057828702346, guid: 8c2497256ec90884aaca268071a592e7, type: 3}
-  explosionTime: 10
-  debuffsList:
-  - value: 10
-    debuff: 0
-  - value: 2
-    debuff: 2
+  AttackTiers:
+  - attackMultiplier: 1
+    attackPrefab: {fileID: 1175763080371693439, guid: 3cedb45dda4d94a36be070acaed60815, type: 3}
+    cooldown: 4

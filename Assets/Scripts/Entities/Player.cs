@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using Entities.EntityComponents;
 using Entities.EntityComponents.Attacks;
@@ -51,7 +52,7 @@ namespace Entities
             base.InitialiseComponents();
 
             Movement = new PlayerMovement(baseMovementSpeed, transform, playerModel, mainCamera);
-            Attacker = new Attacker(attacksList, baseAttackDamage, playerModel, Player);
+            Attacker = new Attacker(attacksList, new List<Attack>(), baseAttackDamage, playerModel, Player);
 
             Inventory.levelIncreased += OnLevelUp;
         }

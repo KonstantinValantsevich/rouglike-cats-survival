@@ -1,4 +1,5 @@
-﻿using Entities.EntityComponents;
+﻿using System.Collections.Generic;
+using Entities.EntityComponents;
 using Entities.EntityComponents.Attacks;
 using Entities.EntityComponents.Movements;
 using UnityEngine;
@@ -15,9 +16,9 @@ namespace Entities.Projectiles
         {
             Health = new Health(baseHealth, baseHealthChange);
             Inventory = new Inventory(baseLevel);
-            Attacker = new Attacker(attacksList, baseAttackDamage, transform, Player);
+            Attacker = new Attacker(attacksList, new List<Attack>(), baseAttackDamage, transform, Player);
             Movement = new NoMovement();
-            
+
             maxScale = transform.localScale;
             transform.localScale = minScale;
             deltaScale = new Vector3(rotationSpeed, rotationSpeed, 0);

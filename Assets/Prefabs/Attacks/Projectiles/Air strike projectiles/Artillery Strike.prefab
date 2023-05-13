@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7221935158340437777}
   - component: {fileID: 8971376915321487010}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Artillery Strike
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -73,7 +73,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7502282156235647039}
   - component: {fileID: 3684553395016009490}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Hexagon Flat-Top (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -157,7 +157,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3299856372771714407}
   - component: {fileID: 6653744141565597705}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Hexagon Flat-Top (6)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -240,7 +240,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2886059142640813435}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Model
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -279,7 +279,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5739524844121816281}
   - component: {fileID: 2174072940564133561}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Hexagon Flat-Top (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -363,7 +363,7 @@ GameObject:
   m_Component:
   - component: {fileID: 612526941281800413}
   - component: {fileID: 4776874294051809632}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Hexagon Flat-Top (8)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -447,7 +447,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7040611020597051096}
   - component: {fileID: 8774597856393055249}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Hexagon Flat-Top (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -531,7 +531,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8171178701145340836}
   - component: {fileID: 8325045886246055461}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Hexagon Flat-Top (7)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -615,7 +615,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3680699795945677597}
   - component: {fileID: 4837181531263704386}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Hexagon Flat-Top (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}

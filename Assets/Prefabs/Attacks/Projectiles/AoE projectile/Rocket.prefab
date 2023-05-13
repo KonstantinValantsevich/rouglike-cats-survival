@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 366748964595528561}
   - component: {fileID: 1735605664018184816}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Triangle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -71,7 +71,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -2006562129
-  m_SortingLayer: 2
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 75f5f34dc1b5347e0b8351032682f224, type: 3}
   m_Color: {r: 0.18867922, g: 0.1201495, b: 0.1201495, a: 1}
@@ -94,7 +94,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8217687566681916726}
   - component: {fileID: 4782513685410767757}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Capsule
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -155,7 +155,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -2006562129
-  m_SortingLayer: 2
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -177,7 +177,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5559763505236279675}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Graphic
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -211,6 +211,10 @@ PrefabInstance:
     - target: {fileID: 5163023491074615283, guid: da5573b6a1ee19c42b157a5c7435940d, type: 3}
       propertyPath: m_Name
       value: Rocket
+      objectReference: {fileID: 0}
+    - target: {fileID: 5163023491074615283, guid: da5573b6a1ee19c42b157a5c7435940d, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 8645301900811513689, guid: da5573b6a1ee19c42b157a5c7435940d, type: 3}
       propertyPath: m_RootOrder
@@ -255,6 +259,10 @@ PrefabInstance:
     - target: {fileID: 8645301900811513689, guid: da5573b6a1ee19c42b157a5c7435940d, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9058300738345198551, guid: da5573b6a1ee19c42b157a5c7435940d, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: da5573b6a1ee19c42b157a5c7435940d, type: 3}
@@ -305,4 +313,6 @@ MonoBehaviour:
   baseAttackDamage: 5
   attacksList: []
   explosionRadius: 3
+  explosionDamageMultiplier: 0.1
   explosionPrefab: {fileID: 6306846879119137203, guid: 0b1bb02e907964ec29563e6ca919e59e, type: 3}
+  explosionTime: 0.5

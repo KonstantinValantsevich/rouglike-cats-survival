@@ -10,7 +10,7 @@ namespace Entities.EntityComponents.Attacks
 
     {
         public Dictionary<string, Attack> availibleAttacks;
-        private List<Attack> attacksList = new List<Attack>();
+        private List<Attack> attacksList;
         private float baseAttackDamage;
 
         private IPlayerState player;
@@ -18,10 +18,14 @@ namespace Entities.EntityComponents.Attacks
 
         public float BaseAttackDamage => baseAttackDamage;
 
-        public Attacker(List<Attack> attacksList, float baseAttackDamage, Transform attackerTransform,
+        public Attacker(List<Attack> attacksList, List<Attack> activeAttacks, float baseAttackDamage, Transform attackerTransform,
             IPlayerState player)
         {
             availibleAttacks = attacksList.ToDictionary(at => at.name, at => at);
+            this.attacksList = activeAttacks;
+            foreach (var attack in activeAttacks) {
+                attack.Initialize(attackerTransform, player);
+            }
             this.baseAttackDamage = baseAttackDamage;
             this.player = player;
             this.attackerTransform = attackerTransform;

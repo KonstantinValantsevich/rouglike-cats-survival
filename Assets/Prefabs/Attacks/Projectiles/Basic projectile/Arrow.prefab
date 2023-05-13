@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 112178407565749483}
   - component: {fileID: 1628552971840542022}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Square
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -95,6 +95,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Arrow
       objectReference: {fileID: 0}
+    - target: {fileID: 5163023491074615283, guid: da5573b6a1ee19c42b157a5c7435940d, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 8645301900811513689, guid: da5573b6a1ee19c42b157a5c7435940d, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -146,6 +150,10 @@ PrefabInstance:
     - target: {fileID: 8645301900811513689, guid: da5573b6a1ee19c42b157a5c7435940d, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9058300738345198551, guid: da5573b6a1ee19c42b157a5c7435940d, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: da5573b6a1ee19c42b157a5c7435940d, type: 3}

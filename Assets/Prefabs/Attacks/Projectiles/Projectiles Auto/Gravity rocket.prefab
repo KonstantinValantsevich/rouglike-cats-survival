@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 366748964595528561}
   - component: {fileID: 1735605664018184816}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Triangle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -94,7 +94,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8217687566681916726}
   - component: {fileID: 4782513685410767757}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Capsule
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -177,7 +177,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5559763505236279675}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Graphic
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -210,7 +210,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 752485779252770283}
-  m_Layer: 6
+  m_Layer: 8
   m_Name: Attacks
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -243,7 +243,7 @@ GameObject:
   - component: {fileID: 5013237983738074181}
   - component: {fileID: 8250435639028795060}
   - component: {fileID: -2548116184930615602}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Gravity rocket
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -11,6 +11,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Ion Blast
       objectReference: {fileID: 0}
+    - target: {fileID: 5163023491074615283, guid: da5573b6a1ee19c42b157a5c7435940d, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 8645301900811513689, guid: da5573b6a1ee19c42b157a5c7435940d, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -62,6 +66,10 @@ PrefabInstance:
     - target: {fileID: 8645301900811513689, guid: da5573b6a1ee19c42b157a5c7435940d, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9058300738345198551, guid: da5573b6a1ee19c42b157a5c7435940d, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: da5573b6a1ee19c42b157a5c7435940d, type: 3}
@@ -125,7 +133,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -2006562129
-  m_SortingLayer: 2
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
   m_Color: {r: 0, g: 0.8680749, b: 1, a: 1}
@@ -159,4 +167,6 @@ MonoBehaviour:
   baseAttackDamage: 5
   attacksList: []
   explosionRadius: 5
+  explosionDamageMultiplier: 0.1
   explosionPrefab: {fileID: 6306846879119137203, guid: bf12e16e662ed45ef81104b6b71e198c, type: 3}
+  explosionTime: 0.5

@@ -1,17 +1,15 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using Entities.EntityComponents;
 using Entities.EntityComponents.Attacks;
 using Entities.EntityComponents.Movements;
 using Entities.Interfaces;
 using UI;
 using UnityEngine;
-using Random = UnityEngine.Random;
 
 namespace Entities
 {
-    public class Player : Entity, IPlayerState
+    public class Player : Entity, IPlayerState, IAgeChangeable
     {
         [Header("Player References")]
         public HealthBar playerHealthBar;
@@ -52,7 +50,7 @@ namespace Entities
             base.InitialiseComponents();
 
             Movement = new PlayerMovement(baseMovementSpeed, transform, playerModel, mainCamera);
-            Attacker = new Attacker(attacksList, new List<Attack>(), baseAttackDamage, playerModel, Player);
+            Attacker = new Attacker(attacksList, new List<Attack>(), baseAttackDamage, playerModel, Inventory.artefacts, Player);
 
             Inventory.levelIncreased += OnLevelUp;
         }
@@ -69,6 +67,11 @@ namespace Entities
         public override void PerformHit(Entity attackedEntity)
         {
             attackedEntity.Health.ChangeHealth(-attackedEntity.Health.MaxHealth);
+        }
+
+        public void ChangeAge(AgeType age)
+        {
+            Attacker.ChangeAge(age);
         }
     }
 }

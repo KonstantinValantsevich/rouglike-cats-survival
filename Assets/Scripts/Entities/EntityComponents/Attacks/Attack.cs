@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Entities.Collectibles;
 using Entities.Interfaces;
 using UnityEngine;
 
@@ -11,11 +12,13 @@ namespace Entities.EntityComponents.Attacks
         public float attackMultiplier;
         public Entity attackPrefab;
         public float cooldown;
+        public ArtefactType artefactToUpgrade;
     }
 
     public abstract class Attack : MonoBehaviour
     {
         public List<AttackTierConfig> AttackTiers;
+        public AttackTierConfig attackSettings;
         protected Transform attackerTransform;
         protected IPlayerState player;
 
@@ -26,7 +29,7 @@ namespace Entities.EntityComponents.Attacks
         private float timePerformed;
         private float timeElapsed;
 
-        private int currentAttackTier;
+        public int currentAttackTier;
 
         public virtual void Initialize(Transform attackerTransform, IPlayerState player)
         {
@@ -51,7 +54,7 @@ namespace Entities.EntityComponents.Attacks
             }
 
             currentAttackTier = attackTier;
-            var attackSettings = AttackTiers[currentAttackTier - 1];
+            attackSettings = AttackTiers[currentAttackTier - 1];
             cooldown = attackSettings.cooldown;
             AttackMultiplier = attackSettings.attackMultiplier;
             AttackPrefab = attackSettings.attackPrefab;

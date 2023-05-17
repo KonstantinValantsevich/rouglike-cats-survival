@@ -4,12 +4,14 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.Serialization;
 
-public class ModelChanger : MonoBehaviour
+public class ModelChanger : MonoBehaviour, IAgeChangeable
 {
     public SpriteRenderer bodyRenderer;
     public Transform rotator;
     [FormerlySerializedAs("bodies")]
     public List<Body> bodyList;
+    public List<Body> bodyListModern;
+    public List<Body> bodyListFuture;
     private Dictionary<BodyType, Sprite> bodies;
 
     private void Start()
@@ -54,6 +56,16 @@ public class ModelChanger : MonoBehaviour
             bodyRenderer.sprite = bodies[BodyType.Profile];
             bodyRenderer.flipX = false;
         }
+    }
+
+    public void ChangeAge(AgeType age)
+    {
+        bodies = age switch {
+            AgeType.Ancient => bodyList.ToDictionary(v => v.type, v => v.sprite),
+            AgeType.Modern => bodyListModern.ToDictionary(v => v.type, v => v.sprite),
+            AgeType.Future => bodyListFuture.ToDictionary(v => v.type, v => v.sprite),
+            _ => throw new ArgumentOutOfRangeException(nameof(age), age, null)
+        };
     }
 }
 

@@ -9,7 +9,7 @@ using UnityEngine;
 
 namespace Entities
 {
-    public class Player : Entity, IPlayerState, IAgeChangeable
+    public class Player : Entity, IPlayerState
     {
         [Header("Player References")]
         public HealthBar playerHealthBar;
@@ -69,7 +69,7 @@ namespace Entities
             attackedEntity.Health.ChangeHealth(-attackedEntity.Health.MaxHealth);
         }
 
-        public void ChangeAge(AgeType age)
+        public override void ChangeAge(AgeType age)
         {
             Attacker.ChangeAge(age);
         }

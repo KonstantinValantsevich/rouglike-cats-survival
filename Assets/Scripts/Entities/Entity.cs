@@ -10,7 +10,7 @@ using UnityEngine;
 
 namespace Entities
 {
-    public abstract class Entity : MonoBehaviour, IAttackable
+    public abstract class Entity : MonoBehaviour, IAttackable, IAgeChangeable
     {
         public event Action<Entity> EntityKilled = delegate { };
 
@@ -34,12 +34,17 @@ namespace Entities
         public float baseAttackDamage;
         public List<Attack> attacksList;
 
+        [Header("Age settings")]
+        public List<Sprite> ageViews;
+
 #endregion
 
         public Health Health;
         public Movement Movement;
         public Attacker Attacker;
         public Inventory Inventory;
+
+        public new SpriteRenderer renderer;
 
         protected IPlayerState Player;
 
@@ -136,5 +141,17 @@ namespace Entities
         }
 
         public abstract void PerformHit(Entity attackedEntity);
+
+        public virtual void ChangeAge(AgeType age)
+        {
+            var ageNum = (int) age;
+            if (ageNum > ageViews.Count) {
+                ageNum = ageViews.Count - 1;
+            }
+            if (ageNum < 0) {
+                return;
+            }
+            renderer.sprite = ageViews[ageNum];
+        }
     }
 }

@@ -561,6 +561,7 @@ MonoBehaviour:
   - {fileID: 1905724382}
   - {fileID: 588766302}
   - {fileID: 415874851}
+  - {fileID: 193748092}
 --- !u!4 &190961885
 Transform:
   m_ObjectHideFlags: 0
@@ -863,6 +864,74 @@ PrefabInstance:
       propertyPath: levelUpScreen
       value: 
       objectReference: {fileID: 2039016748}
+    - target: {fileID: 178540635918331642, guid: 1c5c3c61ff830da4a9ee17008d7f4457, type: 3}
+      propertyPath: bodyListFuture.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 178540635918331642, guid: 1c5c3c61ff830da4a9ee17008d7f4457, type: 3}
+      propertyPath: bodyListModern.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 178540635918331642, guid: 1c5c3c61ff830da4a9ee17008d7f4457, type: 3}
+      propertyPath: bodyListFuture.Array.data[1].type
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 178540635918331642, guid: 1c5c3c61ff830da4a9ee17008d7f4457, type: 3}
+      propertyPath: bodyListFuture.Array.data[2].type
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 178540635918331642, guid: 1c5c3c61ff830da4a9ee17008d7f4457, type: 3}
+      propertyPath: bodyListFuture.Array.data[3].type
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 178540635918331642, guid: 1c5c3c61ff830da4a9ee17008d7f4457, type: 3}
+      propertyPath: bodyListModern.Array.data[0].type
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 178540635918331642, guid: 1c5c3c61ff830da4a9ee17008d7f4457, type: 3}
+      propertyPath: bodyListModern.Array.data[1].type
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 178540635918331642, guid: 1c5c3c61ff830da4a9ee17008d7f4457, type: 3}
+      propertyPath: bodyListModern.Array.data[2].type
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 178540635918331642, guid: 1c5c3c61ff830da4a9ee17008d7f4457, type: 3}
+      propertyPath: bodyListModern.Array.data[3].type
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 178540635918331642, guid: 1c5c3c61ff830da4a9ee17008d7f4457, type: 3}
+      propertyPath: bodyListFuture.Array.data[0].sprite
+      value: 
+      objectReference: {fileID: -1989354690, guid: a2a8953f5334d8c4195208e36e3278f3, type: 3}
+    - target: {fileID: 178540635918331642, guid: 1c5c3c61ff830da4a9ee17008d7f4457, type: 3}
+      propertyPath: bodyListFuture.Array.data[1].sprite
+      value: 
+      objectReference: {fileID: 324153715, guid: a2a8953f5334d8c4195208e36e3278f3, type: 3}
+    - target: {fileID: 178540635918331642, guid: 1c5c3c61ff830da4a9ee17008d7f4457, type: 3}
+      propertyPath: bodyListFuture.Array.data[2].sprite
+      value: 
+      objectReference: {fileID: 471081884, guid: a2a8953f5334d8c4195208e36e3278f3, type: 3}
+    - target: {fileID: 178540635918331642, guid: 1c5c3c61ff830da4a9ee17008d7f4457, type: 3}
+      propertyPath: bodyListFuture.Array.data[3].sprite
+      value: 
+      objectReference: {fileID: 471081884, guid: a2a8953f5334d8c4195208e36e3278f3, type: 3}
+    - target: {fileID: 178540635918331642, guid: 1c5c3c61ff830da4a9ee17008d7f4457, type: 3}
+      propertyPath: bodyListModern.Array.data[0].sprite
+      value: 
+      objectReference: {fileID: 1859066816, guid: 00be627787998f24ea2ebedd2929cdae, type: 3}
+    - target: {fileID: 178540635918331642, guid: 1c5c3c61ff830da4a9ee17008d7f4457, type: 3}
+      propertyPath: bodyListModern.Array.data[1].sprite
+      value: 
+      objectReference: {fileID: 1859066816, guid: 00be627787998f24ea2ebedd2929cdae, type: 3}
+    - target: {fileID: 178540635918331642, guid: 1c5c3c61ff830da4a9ee17008d7f4457, type: 3}
+      propertyPath: bodyListModern.Array.data[2].sprite
+      value: 
+      objectReference: {fileID: -1483133332, guid: 00be627787998f24ea2ebedd2929cdae, type: 3}
+    - target: {fileID: 178540635918331642, guid: 1c5c3c61ff830da4a9ee17008d7f4457, type: 3}
+      propertyPath: bodyListModern.Array.data[3].sprite
+      value: 
+      objectReference: {fileID: 2047529350, guid: 00be627787998f24ea2ebedd2929cdae, type: 3}
     - target: {fileID: 6359161739079665006, guid: 1c5c3c61ff830da4a9ee17008d7f4457, type: 3}
       propertyPath: m_RootOrder
       value: 0

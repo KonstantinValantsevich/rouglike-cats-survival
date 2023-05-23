@@ -1,4 +1,5 @@
-﻿using Entities;
+﻿using System.Collections.Generic;
+using Entities;
 using Entities.Interfaces;
 using UnityEngine;
 using UnityEngine.Pool;
@@ -12,6 +13,7 @@ namespace Spawners
         public Transform entitiesRoot;
 
         private ObjectPool<T> objectPool;
+        protected List<T> spawnedEntities;
 
         public int maxEntities = 5;
 
@@ -28,6 +30,7 @@ namespace Spawners
                 return;
             }
 
+            spawnedEntities = new List<T>(maxEntities);
             objectPool = new ObjectPool<T>(createFunc: SpawnEntity, actionOnGet: ActivateEntity,
                 actionOnRelease: DeactivateEntity, defaultCapacity: maxEntities, maxSize: maxEntities);
             player = FindObjectOfType<Player>();

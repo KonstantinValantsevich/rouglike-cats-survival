@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using Entities.Collectibles;
 using Entities.EntityComponents;
 using Entities.EntityComponents.Attacks;
 using Entities.EntityComponents.Movements;
@@ -16,7 +17,8 @@ namespace Entities.Projectiles
         {
             Health = new Health(baseHealth, baseHealthChange);
             Inventory = new Inventory(baseLevel);
-            Attacker = new Attacker(attacksList, new List<Attack>(), baseAttackDamage, transform, Player);
+            Attacker = new Attacker(attacksList, new List<Attack>(), baseAttackDamage, transform,
+                new HashSet<ArtefactType>(), Player);
             Movement = new NoMovement();
 
             maxScale = transform.localScale;

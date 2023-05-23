@@ -43,8 +43,10 @@ public class Application : MonoBehaviour
         enemySpawner.enabled = false;
         enemySpawner.KillAll();
         var b = Instantiate(boss);
+        b.ChangeAge(currentAge);
         b.Initialise(player);
-        b.transform.position = player.Position + Vector3.left * 10;
+        var rPos = (Random.insideUnitCircle + Vector2.one) * 10;
+        b.transform.position = player.Position + new Vector3(rPos.x, rPos.y, 0);
         b.EntityKilled += BossDefeated;
     }
 

@@ -179,3 +179,8 @@ MonoBehaviour:
   baseMovementSpeed: 3
   baseAttackDamage: 5
   attacksList: []
+  ageViews:
+  - {fileID: 21300000, guid: 08020ed799d1a42c9bd064c6477fd6de, type: 3}
+  - {fileID: 21300000, guid: 1b52561d839ad8f4589b8c6d274fa1ab, type: 3}
+  - {fileID: 21300000, guid: e7bcf6bf704117e45b1299e16626ab50, type: 3}
+  renderer: {fileID: 274911592651048670}

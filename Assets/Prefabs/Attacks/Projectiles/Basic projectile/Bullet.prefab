@@ -135,8 +135,8 @@ SpriteRenderer:
   m_SortingLayerID: -2006562129
   m_SortingLayer: 3
   m_SortingOrder: 0
-  m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
-  m_Color: {r: 0.9212953, g: 1, b: 0, a: 1}
+  m_Sprite: {fileID: 776980070, guid: 087f2ac86ec4941e99239c5f42d2d7cb, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -166,3 +166,5 @@ MonoBehaviour:
   baseMovementSpeed: 25
   baseAttackDamage: 1
   attacksList: []
+  ageViews: []
+  renderer: {fileID: 0}

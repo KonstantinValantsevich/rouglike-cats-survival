@@ -1,0 +1,7 @@
+@startuml
+class NoMovement {
+    + NoMovement()
+    + <<override>> Tick(deltaTime:float) : void
+}
+Movement <|-- NoMovement
+@enduml

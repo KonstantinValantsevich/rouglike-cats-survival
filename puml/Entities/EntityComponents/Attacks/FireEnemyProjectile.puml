@@ -1,0 +1,6 @@
+@startuml
+class FireEnemyProjectile {
+    + <<override>> PerformAttack(deltaTime:float, baseDamage:float) : void
+}
+Attack <|-- FireEnemyProjectile
+@enduml

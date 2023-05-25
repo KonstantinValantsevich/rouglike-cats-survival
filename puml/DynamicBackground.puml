@@ -1,0 +1,19 @@
+@startuml
+class DynamicBackground {
+    + tiles : List<SpriteRenderer>
+    + tileSprites : List<Sprite>
+    - ageType : AgeType
+    + ChangeAge(age:AgeType) : void
+    - UpdateTiles() : void
+}
+interface IAgeChangeable {
+    + ChangeAge(age:AgeType) : void
+}
+enum AgeType {
+    Ancient,
+    Modern,
+    Future,
+}
+MonoBehaviour <|-- DynamicBackground
+IAgeChangeable <|-- DynamicBackground
+@enduml

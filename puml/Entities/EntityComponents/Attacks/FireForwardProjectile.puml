@@ -1,0 +1,9 @@
+@startuml
+class FireForwardProjectile {
+    + <<override>> PerformAttack(deltaTime:float, baseDamage:float) : void
+}
+class AoEProjectile {
+}
+Attack <|-- FireForwardProjectile
+Projectile <|-- AoEProjectile
+@enduml

@@ -1,0 +1,8 @@
+@startuml
+abstract class Collectible {
+    + spawnPriority : int
+    + <<override>> PerformHit(attackedEntity:Entity) : void
+    + {abstract} CollectItem(inventory:Inventory) : void
+}
+Entity <|-- Collectible
+@enduml

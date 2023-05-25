@@ -1,0 +1,9 @@
+@startuml
+class HealthBar {
+    + healthBarImage : Image
+    - trackingHealth : IHealth
+    + Initialise(health:IHealth) : void
+    - UpdateHealthBar(amount:float) : void
+}
+MonoBehaviour <|-- HealthBar
+@enduml

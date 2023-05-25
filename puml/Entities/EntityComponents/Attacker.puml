@@ -1,0 +1,19 @@
+@startuml
+class Attacker {
+    + availibleAttacks : Dictionary<string, Attack>
+    - attacksList : List<Attack>
+    - baseAttackDamage : float
+    - player : IPlayerState
+    - attackerTransform : Transform
+    - artefacts : HashSet<ArtefactType>
+    + BaseAttackDamage : float <<get>>
+    - age : AgeType
+    + Attacker(attacksList:List<Attack>, activeAttacks:List<Attack>, baseAttackDamage:float, attackerTransform:Transform, artefacts:HashSet<ArtefactType>, player:IPlayerState)
+    + Tick(deltaTime:float) : void
+    + AddAttack(attackName:string) : void
+    + ChangeAge(age:AgeType) : void
+    - UpdateAvailibleAttacks() : void
+}
+ITickable <|-- Attacker
+IAgeChangeable <|-- Attacker
+@enduml

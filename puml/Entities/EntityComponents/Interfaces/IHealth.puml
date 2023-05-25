@@ -1,0 +1,10 @@
+@startuml
+interface IHealth {
+    + CurrentHealth : float <<get>>
+    + CurrentHealthChanger : float <<get>>
+    + MaxHealth : float <<get>>
+    + <<const>> MinHealth : float = 0
+    +  <<event>> Healed : Action<float> 
+    +  <<event>> Damaged : Action<float> 
+}
+@enduml

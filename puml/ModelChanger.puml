@@ -1,0 +1,25 @@
+@startuml
+class ModelChanger {
+    + bodyRenderer : SpriteRenderer
+    + rotator : Transform
+    + bodyList : List<Body>
+    + bodyListModern : List<Body>
+    + bodyListFuture : List<Body>
+    - bodies : Dictionary<BodyType, Sprite>
+    - Start() : void
+    - Update() : void
+    + ChangeAge(age:AgeType) : void
+}
+class Body {
+    + type : BodyType
+    + sprite : Sprite
+}
+enum BodyType {
+    Front,
+    Behind,
+    Profile,
+    HalfBack,
+}
+MonoBehaviour <|-- ModelChanger
+IAgeChangeable <|-- ModelChanger
+@enduml

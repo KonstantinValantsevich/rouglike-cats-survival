@@ -1,0 +1,7 @@
+@startuml
+class ExperienceOrb {
+    + experienceAmount : int = 3
+    + <<override>> CollectItem(inventory:Inventory) : void
+}
+Collectible <|-- ExperienceOrb
+@enduml

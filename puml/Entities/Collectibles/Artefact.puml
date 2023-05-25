@@ -1,0 +1,25 @@
+@startuml
+enum ArtefactType {
+    Random,
+    AirStrikeI,
+    AirStrikeII,
+    AutoI,
+    AutoII,
+    FireAoEI,
+    FireAoEII,
+    FireAoEDebuffI,
+    FireAoEDebuffII,
+    ForwardI,
+    ForwardII,
+    FlameI,
+    FlameII,
+    MegaI,
+    MegaII,
+}
+class Artefact {
+    + type : ArtefactType
+    + <<override>> Initialise(player:IPlayerState) : void
+    + <<override>> CollectItem(inventory:Inventory) : void
+}
+Collectible <|-- Artefact
+@enduml

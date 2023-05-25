@@ -1,0 +1,16 @@
+@startuml
+class Inventory {
+    - level : int
+    - experienceLeftToNextLevel : int
+    + artefacts : HashSet<ArtefactType>
+    +  <<event>> artefactCollected : Action<ArtefactType> 
+    +  <<event>> levelIncreased : Action 
+    + Inventory(level:int)
+    + Level : int <<get>>
+    + CollectArtefact(artefactType:ArtefactType) : void
+    + AddExperience(experienceAmount:int) : void
+    + SubtractExperience(experienceAmount:int) : void
+    - GetTotalExperienceInLevel(level:int) : int
+    - GetExperienceToNextLevel(currentLevel:int) : int
+}
+@enduml

@@ -1,0 +1,8 @@
+@startuml
+class PlayerMovement {
+    - <<readonly>> camera : Camera
+    + PlayerMovement(movementSpeed:float, movementTransform:Transform, rotationTransform:Transform, camera:Camera)
+    + <<override>> Tick(deltaTime:float) : void
+}
+Movement <|-- PlayerMovement
+@enduml

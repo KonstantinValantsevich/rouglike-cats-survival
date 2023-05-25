@@ -1,0 +1,10 @@
+@startuml
+class AirStrikeProjectile {
+    + timeToFall : float
+    + startOffset : Vector3
+    + startScale : Vector3
+    # <<override>> KillOnTime() : void
+    # <<override>> InitialiseComponents() : void
+}
+AoEDebuffProjectile <|-- AirStrikeProjectile
+@enduml

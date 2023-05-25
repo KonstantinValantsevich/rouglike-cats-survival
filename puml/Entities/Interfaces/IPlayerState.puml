@@ -1,0 +1,7 @@
+@startuml
+interface IPlayerState {
+    + Position : Vector3 <<get>>
+    + CameraRect : Rect <<get>>
+    + CameraRectCircleRadius : float <<get>>
+}
+@enduml

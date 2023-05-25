@@ -1,0 +1,8 @@
+@startuml
+class Boss {
+    + healthBar : HealthBar
+    + <<override>> Initialise(player:IPlayerState) : void
+    # <<override>> InitialiseComponents() : void
+}
+Enemy <|-- Boss
+@enduml

@@ -1,0 +1,7 @@
+@startuml
+class ForwardMovement {
+    + ForwardMovement(movementSpeed:float, movementTransform:Transform, rotationTransform:Transform)
+    + <<override>> Tick(deltaTime:float) : void
+}
+Movement <|-- ForwardMovement
+@enduml

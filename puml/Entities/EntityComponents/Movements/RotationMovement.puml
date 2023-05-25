@@ -1,0 +1,10 @@
+@startuml
+class RotationMovement {
+    - rotationSpeed : float
+    - startRotation : float
+    - halfRotation : float
+    + RotationMovement(rotationAngle:float, movementSpeed:float, rotationSpeed:float, movementTransform:Transform, rotationTransform:Transform)
+    + <<override>> Tick(deltaTime:float) : void
+}
+Movement <|-- RotationMovement
+@enduml

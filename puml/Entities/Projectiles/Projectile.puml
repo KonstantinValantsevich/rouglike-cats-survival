@@ -1,0 +1,9 @@
+@startuml
+class Projectile {
+    + <<override>> Initialise(player:IPlayerState) : void
+    # <<virtual>> KillOnTime() : void
+    # <<override>> InitialiseComponents() : void
+    + <<override>> PerformHit(attackedEntity:Entity) : void
+}
+Entity <|-- Projectile
+@enduml

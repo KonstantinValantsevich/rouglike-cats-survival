@@ -1,0 +1,12 @@
+@startuml
+class Timer {
+    + textTimer : TextMeshProUGUI
+    - time : TimeSpan
+    - isRunning : bool
+    +  <<event>> MajorMarkElapsed : Action 
+    + StartTimer() : void
+    - Update() : void
+    + PauseTimer() : void
+}
+MonoBehaviour <|-- Timer
+@enduml

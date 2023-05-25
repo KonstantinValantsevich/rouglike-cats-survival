@@ -1,0 +1,27 @@
+@startuml
+class AttackTierConfig {
+    + attackMultiplier : float
+    + attackPrefab : Entity
+    + cooldown : float
+    + artefactToUpgrade : ArtefactType
+}
+abstract class Attack {
+    + AttackTiers : List<AttackTierConfig>
+    + attackSettings : AttackTierConfig
+    # attackerTransform : Transform
+    # player : IPlayerState
+    # AttackMultiplier : float
+    # AttackPrefab : Entity
+    - cooldown : float
+    - timePerformed : float
+    - timeElapsed : float
+    + currentAttackTier : int
+    + <<virtual>> Initialize(attackerTransform:Transform, player:IPlayerState) : void
+    + IncreaseAttackTier() : void
+    + ChangeAttackTier(attackTier:int) : void
+    + {abstract} PerformAttack(deltaTime:float, baseDamage:float) : void
+    # <<virtual>> InitialiseBullet(bullet:Entity, baseDamage:float) : void
+    # Cooldown(deltaTime:float) : bool
+}
+MonoBehaviour <|-- Attack
+@enduml

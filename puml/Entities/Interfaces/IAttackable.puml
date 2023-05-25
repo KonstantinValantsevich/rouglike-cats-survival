@@ -1,0 +1,5 @@
+@startuml
+interface IAttackable {
+    + PerformHit(attackedEntity:Entity) : void
+}
+@enduml

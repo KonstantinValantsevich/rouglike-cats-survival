@@ -1,0 +1,7 @@
+@startuml
+class MegaProjectile {
+    # <<override>> KillOnTime() : void
+    # <<override>> InitialiseComponents() : void
+}
+AoEDebuffProjectile <|-- MegaProjectile
+@enduml

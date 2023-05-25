@@ -1,0 +1,10 @@
+@startuml
+class FireEruption {
+    - maxScale : Vector3
+    - deltaScale : Vector3
+    + minScale : Vector3
+    # <<override>> InitialiseComponents() : void
+    # <<override>> Update() : void
+}
+Fire <|-- FireEruption
+@enduml

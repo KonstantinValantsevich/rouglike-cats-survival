@@ -1,0 +1,7 @@
+@startuml
+class LookAtPlayer {
+    + LookAtPlayer(movementSpeed:float, movementTransform:Transform, rotationTransform:Transform, player:IPlayerState)
+    + <<override>> Tick(deltaTime:float) : void
+}
+FollowPlayerMovement <|-- LookAtPlayer
+@enduml

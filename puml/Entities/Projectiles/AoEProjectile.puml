@@ -1,0 +1,11 @@
+@startuml
+class AoEProjectile {
+    + explosionRadius : float
+    + explosionDamageMultiplier : float = 0.1f
+    + explosionPrefab : GameObject
+    + explosionTime : float = 0.5f
+    - OnDestroy() : void
+    + <<virtual>> Explode(enemy:Enemy) : void
+}
+Projectile <|-- AoEProjectile
+@enduml

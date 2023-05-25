@@ -1,0 +1,6 @@
+@startuml
+class MenuLoad {
+    + LoadGame() : void
+}
+MonoBehaviour <|-- MenuLoad
+@enduml

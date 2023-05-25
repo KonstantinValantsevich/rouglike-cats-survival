@@ -1,0 +1,25 @@
+@startuml
+class Health {
+    + <<const>> MinHealth : float = 0
+    +  <<event>> Healed : Action<float> 
+    +  <<event>> Damaged : Action<float> 
+    +  <<event>> HealthChangerChanged : Action<float> 
+    +  <<event>> HealthReachedMin : Action 
+    +  <<event>> HealthReachedMax : Action 
+    + CurrentHealth : float <<get>>
+    + CurrentHealthChanger : float <<get>>
+    + MaxHealth : float <<get>>
+    - currentHealth : float
+    - currentHealthChanger : float
+    - <<readonly>> maxHealth : float
+    - <<readonly>> initialHealthChanger : float
+    - isInvincible : bool
+    + Health(maxHealth:float, healthChanger:float)
+    + Tick(deltaTime:float) : void
+    + ChangeHealth(amount:float) : void
+    + AddHealthChanger(changeAmount:float) : void
+    + Reset() : void
+}
+ITickable <|-- Health
+IHealth <|-- Health
+@enduml

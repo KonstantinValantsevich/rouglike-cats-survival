@@ -1,0 +1,10 @@
+@startuml
+class AirAttackMovement {
+    - <<readonly>> targetPosition : Vector3
+    + timeToFall : float
+    - scaleSpeed : Vector3
+    + AirAttackMovement(timeToFall:float, startOffset:Vector3, startScale:Vector3, movementTransform:Transform, rotationTransform:Transform)
+    + <<override>> Tick(deltaTime:float) : void
+}
+Movement <|-- AirAttackMovement
+@enduml

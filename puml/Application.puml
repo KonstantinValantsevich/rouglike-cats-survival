@@ -1,0 +1,16 @@
+@startuml
+class Application {
+    + player : Player
+    + boss : Boss
+    + timer : Timer
+    + enemySpawner : EnemySpawner
+    + ageChangeableListGO : List<GameObject>
+    - ageChangeableList : List<IAgeChangeable>
+    - currentAge : AgeType
+    - Start() : void
+    - OnPlayerKilled(player:Entity) : void
+    + SpawnBoss() : void
+    - BossDefeated(boss:Entity) : void
+}
+MonoBehaviour <|-- Application
+@enduml

@@ -1,0 +1,11 @@
+@startuml
+class AutoProjectile {
+    - target : Entity
+    + <<override>> Initialise(player:IPlayerState) : void
+    # <<override>> KillOnTime() : void
+    - Destroy() : void
+    - OnTargetKilled(_:Entity) : void
+    # <<override>> InitialiseComponents() : void
+}
+AoEDebuffProjectile <|-- AutoProjectile
+@enduml

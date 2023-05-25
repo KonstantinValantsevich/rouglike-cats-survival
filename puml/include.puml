@@ -1,0 +1,493 @@
+@startuml
+class Application {
+    + player : Player
+    + boss : Boss
+    + timer : Timer
+    + enemySpawner : EnemySpawner
+    + ageChangeableListGO : List<GameObject>
+    - ageChangeableList : List<IAgeChangeable>
+    - currentAge : AgeType
+    - Start() : void
+    - OnPlayerKilled(player:Entity) : void
+    + SpawnBoss() : void
+    - BossDefeated(boss:Entity) : void
+}
+MonoBehaviour <|-- Application
+class DynamicBackground {
+    + tiles : List<SpriteRenderer>
+    + tileSprites : List<Sprite>
+    - ageType : AgeType
+    + ChangeAge(age:AgeType) : void
+    - UpdateTiles() : void
+}
+interface IAgeChangeable {
+    + ChangeAge(age:AgeType) : void
+}
+enum AgeType {
+    Ancient,
+    Modern,
+    Future,
+}
+MonoBehaviour <|-- DynamicBackground
+IAgeChangeable <|-- DynamicBackground
+class LevelUpScreen {
+    - abillitiesToChoose : List<string>
+    +  <<event>> AbilitieChosen : Action<string> 
+    + buttons : List<TextMeshProUGUI>
+    + Initialize(abilitiesNames:List<string>) : void
+    + ChooseAbility(ability:int) : void
+}
+MonoBehaviour <|-- LevelUpScreen
+class MenuLoad {
+    + LoadGame() : void
+}
+MonoBehaviour <|-- MenuLoad
+class ModelChanger {
+    + bodyRenderer : SpriteRenderer
+    + rotator : Transform
+    + bodyList : List<Body>
+    + bodyListModern : List<Body>
+    + bodyListFuture : List<Body>
+    - bodies : Dictionary<BodyType, Sprite>
+    - Start() : void
+    - Update() : void
+    + ChangeAge(age:AgeType) : void
+}
+class Body {
+    + type : BodyType
+    + sprite : Sprite
+}
+enum BodyType {
+    Front,
+    Behind,
+    Profile,
+    HalfBack,
+}
+MonoBehaviour <|-- ModelChanger
+IAgeChangeable <|-- ModelChanger
+class SceneHelper {
+    + {static} FindClosestEnemy(point:Vector3) : Enemy
+    - {static} <<readonly>> camera : Camera
+    + {static} FindRandomEnemy() : Enemy
+}
+class Timer {
+    + textTimer : TextMeshProUGUI
+    - time : TimeSpan
+    - isRunning : bool
+    +  <<event>> MajorMarkElapsed : Action 
+    + StartTimer() : void
+    - Update() : void
+    + PauseTimer() : void
+}
+MonoBehaviour <|-- Timer
+class DebuffS {
+    + value : float
+    + debuff : DebuffEnum
+}
+abstract class Debuff {
+    + value : float
+    + {abstract} ApplyDebuff(entity:Entity) : void
+}
+class SlowdownDebuff {
+    + <<override>> ApplyDebuff(entity:Entity) : void
+}
+class GravityDebuff {
+    + <<override>> <<async>> ApplyDebuff(entity:Entity) : void
+}
+class DamageDebuff {
+    + <<override>> ApplyDebuff(entity:Entity) : void
+}
+class StunDebuff {
+    + <<override>> ApplyDebuff(entity:Entity) : void
+}
+enum DebuffEnum {
+    Slowdown,
+    DamageDebuff,
+    Stun,
+    Gravity,
+}
+class DebuffExtension <<static>> {
+    + {static} GetDebuff(debuff:DebuffS) : Debuff
+}
+Debuff <|-- SlowdownDebuff
+Debuff <|-- GravityDebuff
+Debuff <|-- DamageDebuff
+Debuff <|-- StunDebuff
+class Boss {
+    + healthBar : HealthBar
+    + <<override>> Initialise(player:IPlayerState) : void
+    # <<override>> InitialiseComponents() : void
+}
+Enemy <|-- Boss
+class Enemy {
+    # <<override>> InitialiseComponents() : void
+    # <<override>> Update() : void
+    + <<override>> ColliderTouched(touchedGameObject:GameObject) : void
+    + <<override>> PerformHit(attackedEntity:Entity) : void
+}
+Entity <|-- Enemy
+abstract class Entity {
+    +  <<event>> EntityKilled : Action<Entity> 
+    + shouldKillOnFarFromPlayer : bool = true
+    + distanceToBeKilled : float = 10
+    + baseHealth : float
+    + baseHealthChange : float
+    + baseLevel : int
+    + baseMovementSpeed : float
+    + baseAttackDamage : float
+    + attacksList : List<Attack>
+    + ageViews : List<Sprite>
+    + Health : Health
+    + Movement : Movement
+    + Attacker : Attacker
+    + Inventory : Inventory
+    + <<new>> renderer : SpriteRenderer
+    # Player : IPlayerState
+    - tickables : List<ITickable>
+    - isInvisible : bool
+    + <<virtual>> Initialise(player:IPlayerState) : void
+    # <<virtual>> InitialiseComponents() : void
+    # UpdateTickables() : void
+    # <<virtual>> Update() : void
+    + Activate() : void
+    + Deactivate() : void
+    - OnCollisionEnter2D(col:Collision2D) : void
+    - OnTriggerEnter2D(col:Collider2D) : void
+    + <<virtual>> ColliderTouched(touchedGameObject:GameObject) : void
+    - OnBecameInvisible() : void
+    - OnBecameVisible() : void
+    + {abstract} PerformHit(attackedEntity:Entity) : void
+    + <<virtual>> ChangeAge(age:AgeType) : void
+}
+MonoBehaviour <|-- Entity
+IAttackable <|-- Entity
+IAgeChangeable <|-- Entity
+class Player {
+    + playerHealthBar : HealthBar
+    + playerModel : Transform
+    + levelUpScreen : LevelUpScreen
+    + Position : Vector3 <<get>>
+    + CameraRect : Rect <<get>>
+    - mainCamera : Camera
+    + <<override>> Initialise(player:IPlayerState) : void
+    # <<override>> InitialiseComponents() : void
+    - OnLevelUp() : void
+    + <<override>> PerformHit(attackedEntity:Entity) : void
+    + <<override>> ChangeAge(age:AgeType) : void
+}
+Entity <|-- Player
+IPlayerState <|-- Player
+class EnemySpawner {
+    + ChangeAge(age:AgeType) : void
+}
+"Spawner`1" "<Enemy>" <|-- EnemySpawner
+IAgeChangeable <|-- EnemySpawner
+class PlayerCollectiblesSpawner {
+    # <<override>> SpawnEntity() : Collectible
+}
+"Spawner`1" "<Collectible>" <|-- PlayerCollectiblesSpawner
+abstract class "Spawner`1"<T> {
+    + entityPrefab : T
+    + entitiesRoot : Transform
+    - objectPool : ObjectPool<T>
+    # spawnedEntities : List<T>
+    + maxEntities : int = 5
+    + spawnCooldownTime : float = 0.5f
+    + spawnRingRadius : float = 4
+    # player : IPlayerState
+    - timeLastEntitySpawned : float = 0
+    # <<virtual>> Start() : void
+    - Update() : void
+    # <<virtual>> SpawnEntity() : T
+    # <<virtual>> ActivateEntity(entity:T) : void
+    # <<virtual>> DeactivateEntity(entity:T) : void
+    # <<virtual>> InitialiseEntity(entity:T) : void
+    # RandomPositionBehindCamera() : Vector3
+    # <<virtual>> CanBeSpawned() : bool
+    + KillAll() : void
+}
+MonoBehaviour <|-- "Spawner`1"
+class HealthBar {
+    + healthBarImage : Image
+    - trackingHealth : IHealth
+    + Initialise(health:IHealth) : void
+    - UpdateHealthBar(amount:float) : void
+}
+MonoBehaviour <|-- HealthBar
+enum ArtefactType {
+    Random,
+    AirStrikeI,
+    AirStrikeII,
+    AutoI,
+    AutoII,
+    FireAoEI,
+    FireAoEII,
+    FireAoEDebuffI,
+    FireAoEDebuffII,
+    ForwardI,
+    ForwardII,
+    FlameI,
+    FlameII,
+    MegaI,
+    MegaII,
+}
+class Artefact {
+    + type : ArtefactType
+    + <<override>> Initialise(player:IPlayerState) : void
+    + <<override>> CollectItem(inventory:Inventory) : void
+}
+Collectible <|-- Artefact
+abstract class Collectible {
+    + spawnPriority : int
+    + <<override>> PerformHit(attackedEntity:Entity) : void
+    + {abstract} CollectItem(inventory:Inventory) : void
+}
+Entity <|-- Collectible
+class ExperienceOrb {
+    + experienceAmount : int = 3
+    + <<override>> CollectItem(inventory:Inventory) : void
+}
+Collectible <|-- ExperienceOrb
+class Attacker {
+    + availibleAttacks : Dictionary<string, Attack>
+    - attacksList : List<Attack>
+    - baseAttackDamage : float
+    - player : IPlayerState
+    - attackerTransform : Transform
+    - artefacts : HashSet<ArtefactType>
+    + BaseAttackDamage : float <<get>>
+    - age : AgeType
+    + Attacker(attacksList:List<Attack>, activeAttacks:List<Attack>, baseAttackDamage:float, attackerTransform:Transform, artefacts:HashSet<ArtefactType>, player:IPlayerState)
+    + Tick(deltaTime:float) : void
+    + AddAttack(attackName:string) : void
+    + ChangeAge(age:AgeType) : void
+    - UpdateAvailibleAttacks() : void
+}
+ITickable <|-- Attacker
+IAgeChangeable <|-- Attacker
+class Health {
+    + <<const>> MinHealth : float = 0
+    +  <<event>> Healed : Action<float> 
+    +  <<event>> Damaged : Action<float> 
+    +  <<event>> HealthChangerChanged : Action<float> 
+    +  <<event>> HealthReachedMin : Action 
+    +  <<event>> HealthReachedMax : Action 
+    + CurrentHealth : float <<get>>
+    + CurrentHealthChanger : float <<get>>
+    + MaxHealth : float <<get>>
+    - currentHealth : float
+    - currentHealthChanger : float
+    - <<readonly>> maxHealth : float
+    - <<readonly>> initialHealthChanger : float
+    - isInvincible : bool
+    + Health(maxHealth:float, healthChanger:float)
+    + Tick(deltaTime:float) : void
+    + ChangeHealth(amount:float) : void
+    + AddHealthChanger(changeAmount:float) : void
+    + Reset() : void
+}
+ITickable <|-- Health
+IHealth <|-- Health
+class Inventory {
+    - level : int
+    - experienceLeftToNextLevel : int
+    + artefacts : HashSet<ArtefactType>
+    +  <<event>> artefactCollected : Action<ArtefactType> 
+    +  <<event>> levelIncreased : Action 
+    + Inventory(level:int)
+    + Level : int <<get>>
+    + CollectArtefact(artefactType:ArtefactType) : void
+    + AddExperience(experienceAmount:int) : void
+    + SubtractExperience(experienceAmount:int) : void
+    - GetTotalExperienceInLevel(level:int) : int
+    - GetExperienceToNextLevel(currentLevel:int) : int
+}
+interface IAttackable {
+    + PerformHit(attackedEntity:Entity) : void
+}
+interface IPlayerState {
+    + Position : Vector3 <<get>>
+    + CameraRect : Rect <<get>>
+    + CameraRectCircleRadius : float <<get>>
+}
+class AirStrikeProjectile {
+    + timeToFall : float
+    + startOffset : Vector3
+    + startScale : Vector3
+    # <<override>> KillOnTime() : void
+    # <<override>> InitialiseComponents() : void
+}
+AoEDebuffProjectile <|-- AirStrikeProjectile
+class AoEDebuffProjectile {
+    + debuffsList : List<DebuffS>
+    - debuffs : List<Debuff>
+    + <<override>> Explode(enemy:Enemy) : void
+}
+AoEProjectile <|-- AoEDebuffProjectile
+class AoEProjectile {
+    + explosionRadius : float
+    + explosionDamageMultiplier : float = 0.1f
+    + explosionPrefab : GameObject
+    + explosionTime : float = 0.5f
+    - OnDestroy() : void
+    + <<virtual>> Explode(enemy:Enemy) : void
+}
+Projectile <|-- AoEProjectile
+class AutoProjectile {
+    - target : Entity
+    + <<override>> Initialise(player:IPlayerState) : void
+    # <<override>> KillOnTime() : void
+    - Destroy() : void
+    - OnTargetKilled(_:Entity) : void
+    # <<override>> InitialiseComponents() : void
+}
+AoEDebuffProjectile <|-- AutoProjectile
+class Fire {
+    + rotationSpeed : float
+    + rotationAngle : float
+    + cyclesCount : float = 1
+    # <<override>> InitialiseComponents() : void
+    + <<override>> PerformHit(attackedEntity:Entity) : void
+}
+Entity <|-- Fire
+class FireEruption {
+    - maxScale : Vector3
+    - deltaScale : Vector3
+    + minScale : Vector3
+    # <<override>> InitialiseComponents() : void
+    # <<override>> Update() : void
+}
+Fire <|-- FireEruption
+class MegaProjectile {
+    # <<override>> KillOnTime() : void
+    # <<override>> InitialiseComponents() : void
+}
+AoEDebuffProjectile <|-- MegaProjectile
+class Projectile {
+    + <<override>> Initialise(player:IPlayerState) : void
+    # <<virtual>> KillOnTime() : void
+    # <<override>> InitialiseComponents() : void
+    + <<override>> PerformHit(attackedEntity:Entity) : void
+}
+Entity <|-- Projectile
+class AttackTierConfig {
+    + attackMultiplier : float
+    + attackPrefab : Entity
+    + cooldown : float
+    + artefactToUpgrade : ArtefactType
+}
+abstract class Attack {
+    + AttackTiers : List<AttackTierConfig>
+    + attackSettings : AttackTierConfig
+    # attackerTransform : Transform
+    # player : IPlayerState
+    # AttackMultiplier : float
+    # AttackPrefab : Entity
+    - cooldown : float
+    - timePerformed : float
+    - timeElapsed : float
+    + currentAttackTier : int
+    + <<virtual>> Initialize(attackerTransform:Transform, player:IPlayerState) : void
+    + IncreaseAttackTier() : void
+    + ChangeAttackTier(attackTier:int) : void
+    + {abstract} PerformAttack(deltaTime:float, baseDamage:float) : void
+    # <<virtual>> InitialiseBullet(bullet:Entity, baseDamage:float) : void
+    # Cooldown(deltaTime:float) : bool
+}
+MonoBehaviour <|-- Attack
+class FireCircleProjectile {
+    - bullets : List<Entity>
+    + <<override>> PerformAttack(deltaTime:float, baseDamage:float) : void
+}
+Attack <|-- FireCircleProjectile
+class FireEnemyProjectile {
+    + <<override>> PerformAttack(deltaTime:float, baseDamage:float) : void
+}
+Attack <|-- FireEnemyProjectile
+class FireForwardProjectile {
+    + <<override>> PerformAttack(deltaTime:float, baseDamage:float) : void
+}
+class AoEProjectile {
+}
+Attack <|-- FireForwardProjectile
+Projectile <|-- AoEProjectile
+class PartPlayerProjectile {
+    - playerMock : GameObject
+    - Awake() : void
+    - Update() : void
+    + <<override>> PerformAttack(deltaTime:float, baseDamage:float) : void
+}
+Attack <|-- PartPlayerProjectile
+interface IHealth {
+    + CurrentHealth : float <<get>>
+    + CurrentHealthChanger : float <<get>>
+    + MaxHealth : float <<get>>
+    + <<const>> MinHealth : float = 0
+    +  <<event>> Healed : Action<float> 
+    +  <<event>> Damaged : Action<float> 
+}
+interface ITickable {
+    + Tick(deltaTime:float) : void
+}
+class AirAttackMovement {
+    - <<readonly>> targetPosition : Vector3
+    + timeToFall : float
+    - scaleSpeed : Vector3
+    + AirAttackMovement(timeToFall:float, startOffset:Vector3, startScale:Vector3, movementTransform:Transform, rotationTransform:Transform)
+    + <<override>> Tick(deltaTime:float) : void
+}
+Movement <|-- AirAttackMovement
+class FollowPlayerMovement {
+    # player : IPlayerState
+    + FollowPlayerMovement(movementSpeed:float, movementTransform:Transform, rotationTransform:Transform, player:IPlayerState)
+    + <<override>> Tick(deltaTime:float) : void
+}
+Movement <|-- FollowPlayerMovement
+class FollowTargetMovement {
+    - target : Transform
+    + FollowTargetMovement(target:Transform, baseMovementSpeed:float, transform:Transform, rotateTransform:Transform)
+    + <<override>> Tick(deltaTime:float) : void
+}
+Movement <|-- FollowTargetMovement
+class ForwardMovement {
+    + ForwardMovement(movementSpeed:float, movementTransform:Transform, rotationTransform:Transform)
+    + <<override>> Tick(deltaTime:float) : void
+}
+Movement <|-- ForwardMovement
+class LookAtPlayer {
+    + LookAtPlayer(movementSpeed:float, movementTransform:Transform, rotationTransform:Transform, player:IPlayerState)
+    + <<override>> Tick(deltaTime:float) : void
+}
+FollowPlayerMovement <|-- LookAtPlayer
+abstract class Movement {
+    + <<const>> minMovementSpeed : float = 0
+    - movementSpeed : float
+    # movementTransform : Transform
+    # rotationTransform : Transform
+    # Movement(movementSpeed:float, movementTransform:Transform, rotationTransform:Transform)
+    + {abstract} Tick(deltaTime:float) : void
+    # Move(movementDirection:Vector2) : void
+    # SetLookRotation(pointToLook:Vector3) : void
+    + ChangeMovementSpeed(amount:float) : void
+}
+ITickable <|-- Movement
+class NoMovement {
+    + NoMovement()
+    + <<override>> Tick(deltaTime:float) : void
+}
+Movement <|-- NoMovement
+class PlayerMovement {
+    - <<readonly>> camera : Camera
+    + PlayerMovement(movementSpeed:float, movementTransform:Transform, rotationTransform:Transform, camera:Camera)
+    + <<override>> Tick(deltaTime:float) : void
+}
+Movement <|-- PlayerMovement
+class RotationMovement {
+    - rotationSpeed : float
+    - startRotation : float
+    - halfRotation : float
+    + RotationMovement(rotationAngle:float, movementSpeed:float, rotationSpeed:float, movementTransform:Transform, rotationTransform:Transform)
+    + <<override>> Tick(deltaTime:float) : void
+}
+Movement <|-- RotationMovement
+@enduml

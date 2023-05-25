@@ -1,0 +1,7 @@
+@startuml
+class FireCircleProjectile {
+    - bullets : List<Entity>
+    + <<override>> PerformAttack(deltaTime:float, baseDamage:float) : void
+}
+Attack <|-- FireCircleProjectile
+@enduml

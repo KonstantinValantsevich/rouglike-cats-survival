@@ -1,0 +1,6 @@
+@startuml
+class PlayerCollectiblesSpawner {
+    # <<override>> SpawnEntity() : Collectible
+}
+"Spawner`1" "<Collectible>" <|-- PlayerCollectiblesSpawner
+@enduml

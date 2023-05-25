@@ -1,0 +1,9 @@
+@startuml
+class Enemy {
+    # <<override>> InitialiseComponents() : void
+    # <<override>> Update() : void
+    + <<override>> ColliderTouched(touchedGameObject:GameObject) : void
+    + <<override>> PerformHit(attackedEntity:Entity) : void
+}
+Entity <|-- Enemy
+@enduml

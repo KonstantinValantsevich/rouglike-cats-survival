@@ -1,0 +1,9 @@
+@startuml
+class PartPlayerProjectile {
+    - playerMock : GameObject
+    - Awake() : void
+    - Update() : void
+    + <<override>> PerformAttack(deltaTime:float, baseDamage:float) : void
+}
+Attack <|-- PartPlayerProjectile
+@enduml

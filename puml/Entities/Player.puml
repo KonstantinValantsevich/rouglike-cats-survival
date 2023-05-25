@@ -1,0 +1,17 @@
+@startuml
+class Player {
+    + playerHealthBar : HealthBar
+    + playerModel : Transform
+    + levelUpScreen : LevelUpScreen
+    + Position : Vector3 <<get>>
+    + CameraRect : Rect <<get>>
+    - mainCamera : Camera
+    + <<override>> Initialise(player:IPlayerState) : void
+    # <<override>> InitialiseComponents() : void
+    - OnLevelUp() : void
+    + <<override>> PerformHit(attackedEntity:Entity) : void
+    + <<override>> ChangeAge(age:AgeType) : void
+}
+Entity <|-- Player
+IPlayerState <|-- Player
+@enduml

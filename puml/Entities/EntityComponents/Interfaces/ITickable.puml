@@ -1,0 +1,5 @@
+@startuml
+interface ITickable {
+    + Tick(deltaTime:float) : void
+}
+@enduml

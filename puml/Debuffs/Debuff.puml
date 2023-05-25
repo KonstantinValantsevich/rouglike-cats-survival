@@ -1,0 +1,35 @@
+@startuml
+class DebuffS {
+    + value : float
+    + debuff : DebuffEnum
+}
+abstract class Debuff {
+    + value : float
+    + {abstract} ApplyDebuff(entity:Entity) : void
+}
+class SlowdownDebuff {
+    + <<override>> ApplyDebuff(entity:Entity) : void
+}
+class GravityDebuff {
+    + <<override>> <<async>> ApplyDebuff(entity:Entity) : void
+}
+class DamageDebuff {
+    + <<override>> ApplyDebuff(entity:Entity) : void
+}
+class StunDebuff {
+    + <<override>> ApplyDebuff(entity:Entity) : void
+}
+enum DebuffEnum {
+    Slowdown,
+    DamageDebuff,
+    Stun,
+    Gravity,
+}
+class DebuffExtension <<static>> {
+    + {static} GetDebuff(debuff:DebuffS) : Debuff
+}
+Debuff <|-- SlowdownDebuff
+Debuff <|-- GravityDebuff
+Debuff <|-- DamageDebuff
+Debuff <|-- StunDebuff
+@enduml

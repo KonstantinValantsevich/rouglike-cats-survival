@@ -1,0 +1,23 @@
+@startuml
+abstract class "Spawner`1"<T> {
+    + entityPrefab : T
+    + entitiesRoot : Transform
+    - objectPool : ObjectPool<T>
+    # spawnedEntities : List<T>
+    + maxEntities : int = 5
+    + spawnCooldownTime : float = 0.5f
+    + spawnRingRadius : float = 4
+    # player : IPlayerState
+    - timeLastEntitySpawned : float = 0
+    # <<virtual>> Start() : void
+    - Update() : void
+    # <<virtual>> SpawnEntity() : T
+    # <<virtual>> ActivateEntity(entity:T) : void
+    # <<virtual>> DeactivateEntity(entity:T) : void
+    # <<virtual>> InitialiseEntity(entity:T) : void
+    # RandomPositionBehindCamera() : Vector3
+    # <<virtual>> CanBeSpawned() : bool
+    + KillAll() : void
+}
+MonoBehaviour <|-- "Spawner`1"
+@enduml

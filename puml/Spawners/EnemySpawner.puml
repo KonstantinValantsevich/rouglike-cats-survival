@@ -1,0 +1,7 @@
+@startuml
+class EnemySpawner {
+    + ChangeAge(age:AgeType) : void
+}
+"Spawner`1" "<Enemy>" <|-- EnemySpawner
+IAgeChangeable <|-- EnemySpawner
+@enduml

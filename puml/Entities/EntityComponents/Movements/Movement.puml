@@ -1,0 +1,14 @@
+@startuml
+abstract class Movement {
+    + <<const>> minMovementSpeed : float = 0
+    - movementSpeed : float
+    # movementTransform : Transform
+    # rotationTransform : Transform
+    # Movement(movementSpeed:float, movementTransform:Transform, rotationTransform:Transform)
+    + {abstract} Tick(deltaTime:float) : void
+    # Move(movementDirection:Vector2) : void
+    # SetLookRotation(pointToLook:Vector3) : void
+    + ChangeMovementSpeed(amount:float) : void
+}
+ITickable <|-- Movement
+@enduml

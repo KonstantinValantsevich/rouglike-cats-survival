@@ -1,0 +1,7 @@
+@startuml
+class SceneHelper {
+    + {static} FindClosestEnemy(point:Vector3) : Enemy
+    - {static} <<readonly>> camera : Camera
+    + {static} FindRandomEnemy() : Enemy
+}
+@enduml

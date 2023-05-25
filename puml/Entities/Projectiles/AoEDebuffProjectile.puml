@@ -1,0 +1,8 @@
+@startuml
+class AoEDebuffProjectile {
+    + debuffsList : List<DebuffS>
+    - debuffs : List<Debuff>
+    + <<override>> Explode(enemy:Enemy) : void
+}
+AoEProjectile <|-- AoEDebuffProjectile
+@enduml

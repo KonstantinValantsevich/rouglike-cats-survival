@@ -1,0 +1,10 @@
+@startuml
+class Fire {
+    + rotationSpeed : float
+    + rotationAngle : float
+    + cyclesCount : float = 1
+    # <<override>> InitialiseComponents() : void
+    + <<override>> PerformHit(attackedEntity:Entity) : void
+}
+Entity <|-- Fire
+@enduml

@@ -1,0 +1,10 @@
+@startuml
+class LevelUpScreen {
+    - abillitiesToChoose : List<string>
+    +  <<event>> AbilitieChosen : Action<string> 
+    + buttons : List<TextMeshProUGUI>
+    + Initialize(abilitiesNames:List<string>) : void
+    + ChooseAbility(ability:int) : void
+}
+MonoBehaviour <|-- LevelUpScreen
+@enduml

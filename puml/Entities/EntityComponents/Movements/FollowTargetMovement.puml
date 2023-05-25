@@ -1,0 +1,8 @@
+@startuml
+class FollowTargetMovement {
+    - target : Transform
+    + FollowTargetMovement(target:Transform, baseMovementSpeed:float, transform:Transform, rotateTransform:Transform)
+    + <<override>> Tick(deltaTime:float) : void
+}
+Movement <|-- FollowTargetMovement
+@enduml

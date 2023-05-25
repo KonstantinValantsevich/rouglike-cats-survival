@@ -1,0 +1,38 @@
+@startuml
+abstract class Entity {
+    +  <<event>> EntityKilled : Action<Entity> 
+    + shouldKillOnFarFromPlayer : bool = true
+    + distanceToBeKilled : float = 10
+    + baseHealth : float
+    + baseHealthChange : float
+    + baseLevel : int
+    + baseMovementSpeed : float
+    + baseAttackDamage : float
+    + attacksList : List<Attack>
+    + ageViews : List<Sprite>
+    + Health : Health
+    + Movement : Movement
+    + Attacker : Attacker
+    + Inventory : Inventory
+    + <<new>> renderer : SpriteRenderer
+    # Player : IPlayerState
+    - tickables : List<ITickable>
+    - isInvisible : bool
+    + <<virtual>> Initialise(player:IPlayerState) : void
+    # <<virtual>> InitialiseComponents() : void
+    # UpdateTickables() : void
+    # <<virtual>> Update() : void
+    + Activate() : void
+    + Deactivate() : void
+    - OnCollisionEnter2D(col:Collision2D) : void
+    - OnTriggerEnter2D(col:Collider2D) : void
+    + <<virtual>> ColliderTouched(touchedGameObject:GameObject) : void
+    - OnBecameInvisible() : void
+    - OnBecameVisible() : void
+    + {abstract} PerformHit(attackedEntity:Entity) : void
+    + <<virtual>> ChangeAge(age:AgeType) : void
+}
+MonoBehaviour <|-- Entity
+IAttackable <|-- Entity
+IAgeChangeable <|-- Entity
+@enduml

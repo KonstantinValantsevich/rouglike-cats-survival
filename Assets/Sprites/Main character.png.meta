@@ -132,7 +132,7 @@ TextureImporter:
       name: Main character_0
       rect:
         serializedVersion: 2
-        x: 11
+        x: 12
         y: 9
         width: 132
         height: 327
@@ -153,12 +153,12 @@ TextureImporter:
       name: Main character_1
       rect:
         serializedVersion: 2
-        x: 185
-        y: 9
-        width: 159
+        x: 149
+        y: 18
+        width: 190
         height: 333
       alignment: 9
-      pivot: {x: 0.32, y: 0.5}
+      pivot: {x: 0.6337351, y: 0.49694}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []

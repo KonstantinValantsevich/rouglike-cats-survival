@@ -168,7 +168,7 @@ MonoBehaviour:
   attacksList: []
   ageViews: []
   renderer: {fileID: 0}
-  explosionRadius: 5
-  explosionDamageMultiplier: 0.1
+  explosionRadius: 7
+  explosionDamageMultiplier: 1
   explosionPrefab: {fileID: 6306846879119137203, guid: bf12e16e662ed45ef81104b6b71e198c, type: 3}
   explosionTime: 0.5

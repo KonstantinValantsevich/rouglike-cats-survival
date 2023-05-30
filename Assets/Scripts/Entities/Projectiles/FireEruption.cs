@@ -27,7 +27,6 @@ namespace Entities.Projectiles
             Destroy(gameObject, ((maxScale - minScale) / rotationSpeed * 2).x * cyclesCount);
         }
 
-        //TODO: Вынести в Movement Component
         protected override void Update()
         {
             transform.localScale += deltaScale * Time.deltaTime;

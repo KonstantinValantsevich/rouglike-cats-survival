@@ -4,6 +4,7 @@ using System.Linq;
 using Entities.EntityComponents.Attacks;
 using Entities.EntityComponents.Movements;
 using Entities.Interfaces;
+using TMPro;
 using UI;
 using UnityEngine;
 
@@ -17,8 +18,9 @@ namespace Entities
 
         [Header("UI")]
         public LevelUpScreen levelUpScreen;
+        public ExpBar ExpBar;
         public Vector3 Position => transform.position;
-
+        public TextMeshProUGUI artefactsList;
         public Rect CameraRect {
             get {
                 var cameraPosition = mainCamera.transform.position;
@@ -42,7 +44,11 @@ namespace Entities
             base.Initialise(player);
 
             playerHealthBar.Initialise(Health);
-            levelUpScreen.AbilitieChosen += Attacker.AddAttack;
+            ExpBar.Initialise(Inventory);
+            levelUpScreen.AbilityChosen += Attacker.AddAttack;
+            Inventory.ArtefactCollected += artefact => {
+                artefactsList.text += $"\n   -{artefact}";
+            };
         }
 
         protected override void InitialiseComponents()
@@ -50,12 +56,11 @@ namespace Entities
             base.InitialiseComponents();
 
             Movement = new PlayerMovement(baseMovementSpeed, transform, playerModel, mainCamera);
-            Attacker = new Attacker(attacksList, new List<Attack>(), baseAttackDamage, playerModel, Inventory.artefacts, Player);
+            Attacker = new Attacker(attacksList, GetComponentsInChildren<Attack>().ToList(), baseAttackDamage, playerModel, Inventory.artefacts, Player);
 
-            Inventory.levelIncreased += OnLevelUp;
+            Inventory.LevelIncreased += OnLevelUp;
         }
 
-//TODO: Dynamic up to 4 buttons
         private void OnLevelUp()
         {
             var rng = new System.Random();

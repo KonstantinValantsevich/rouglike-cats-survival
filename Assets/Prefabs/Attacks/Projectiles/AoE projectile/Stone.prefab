@@ -96,7 +96,7 @@ CircleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -174,7 +174,9 @@ MonoBehaviour:
   baseMovementSpeed: 6
   baseAttackDamage: 5
   attacksList: []
+  ageViews: []
+  renderer: {fileID: 0}
   explosionRadius: 1.5
-  explosionDamageMultiplier: 0.1
+  explosionDamageMultiplier: 0.5
   explosionPrefab: {fileID: 6306846879119137203, guid: e9e013525300b404c978cef83cfe2e3f, type: 3}
   explosionTime: 0.5

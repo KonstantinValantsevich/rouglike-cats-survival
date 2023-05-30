@@ -70,8 +70,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -2006562129
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: -1157924064, guid: 3e2aac7f6a1014ea39eb281fc4697adb, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -136,10 +136,12 @@ MonoBehaviour:
   baseHealthChange: 0
   baseLevel: 0
   baseMovementSpeed: 10
-  baseAttackDamage: 2
+  baseAttackDamage: 15
   attacksList: []
+  ageViews: []
+  renderer: {fileID: 0}
   explosionRadius: 0
-  explosionDamageMultiplier: 0.1
+  explosionDamageMultiplier: 1
   explosionPrefab: {fileID: 0}
   explosionTime: 0.5
   debuffsList: []

@@ -51,11 +51,11 @@ MonoBehaviour:
   baseHealthChange: 0
   baseLevel: 0
   baseMovementSpeed: 5
-  baseAttackDamage: 1
+  baseAttackDamage: 15
   attacksList: []
   ageViews: []
   renderer: {fileID: 0}
-  explosionRadius: 7
+  explosionRadius: 8
   explosionDamageMultiplier: 1
   explosionPrefab: {fileID: 6306846879119137203, guid: 4ef5518c094eeb144ad1cc0d034064ee, type: 3}
   explosionTime: 1
@@ -169,8 +169,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -2006562129
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: 1849928608, guid: ceae9840162a3453782a16d94862aeb1, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

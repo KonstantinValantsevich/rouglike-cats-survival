@@ -50,8 +50,10 @@ MonoBehaviour:
   baseHealthChange: 0
   baseLevel: 0
   baseMovementSpeed: 0
-  baseAttackDamage: 1
+  baseAttackDamage: 200
   attacksList: []
+  ageViews: []
+  renderer: {fileID: 0}
   explosionRadius: 50
   explosionDamageMultiplier: 5
   explosionPrefab: {fileID: 1311215057828702346, guid: ab54f92274077544da7de8da5cc0aca4, type: 3}

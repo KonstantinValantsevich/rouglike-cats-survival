@@ -38,7 +38,7 @@ public class ModelChanger : MonoBehaviour, IAgeChangeable
         }
         else if (Between(rotation, 292.5F, 0)) {
             bodyRenderer.sprite = bodies[BodyType.Profile];
-            bodyRenderer.flipX = true;
+            bodyRenderer.flipX = false;
         }
         else if (Between(rotation, 0, 67.5f)) {
             bodyRenderer.sprite = bodies[BodyType.HalfBack];
@@ -54,7 +54,7 @@ public class ModelChanger : MonoBehaviour, IAgeChangeable
         }
         else if (Between(rotation, 180F, 247.5F)) {
             bodyRenderer.sprite = bodies[BodyType.Profile];
-            bodyRenderer.flipX = false;
+            bodyRenderer.flipX = true;
         }
     }
 

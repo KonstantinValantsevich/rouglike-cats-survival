@@ -26,7 +26,7 @@ Transform:
   m_GameObject: {fileID: 1265920331123799290}
   m_LocalRotation: {x: 0, y: 0, z: -0.7071068, w: 0.7071068}
   m_LocalPosition: {x: 4, y: -0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.52, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 5728647562624759576}
@@ -136,13 +136,13 @@ MonoBehaviour:
   baseHealthChange: 0
   baseLevel: 0
   baseMovementSpeed: 1
-  baseAttackDamage: 1
+  baseAttackDamage: 5
   attacksList: []
   ageViews: []
   renderer: {fileID: 0}
   rotationSpeed: 900
-  rotationAngle: 45
-  cyclesCount: 5
+  rotationAngle: 90
+  cyclesCount: 10
 --- !u!61 &691019350365818113
 BoxCollider2D:
   m_ObjectHideFlags: 0

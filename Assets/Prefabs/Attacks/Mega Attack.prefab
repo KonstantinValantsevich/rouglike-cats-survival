@@ -45,12 +45,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   AttackTiers:
-  - attackMultiplier: 2
+  - attackMultiplier: 1
     attackPrefab: {fileID: -6006906755918979746, guid: de5ddc5a00715f94fbec999b7ff9671e, type: 3}
-    cooldown: 5
-  - attackMultiplier: 5
+    cooldown: 60
+    artefactToUpgrade: 13
+  - attackMultiplier: 2
     attackPrefab: {fileID: -6006906755918979746, guid: 40a086e333646284db5813af63df4856, type: 3}
-    cooldown: 5
-  - attackMultiplier: 10
+    cooldown: 60
+    artefactToUpgrade: 14
+  - attackMultiplier: 3
     attackPrefab: {fileID: -6006906755918979746, guid: bf219875a150a4a419643b7d574a9754, type: 3}
-    cooldown: 5
+    cooldown: 60
+    artefactToUpgrade: 0
+  attackSettings:
+    attackMultiplier: 0
+    attackPrefab: {fileID: 0}
+    cooldown: 0
+    artefactToUpgrade: 0
+  currentAttackTier: 0

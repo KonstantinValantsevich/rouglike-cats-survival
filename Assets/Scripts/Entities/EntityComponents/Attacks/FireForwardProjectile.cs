@@ -15,8 +15,4 @@ namespace Entities.EntityComponents.Attacks
             InitialiseBullet(bullet, baseDamage);
         }
     }
-
-    public class AoEProjectile : Projectile
-    {
-    }
 }

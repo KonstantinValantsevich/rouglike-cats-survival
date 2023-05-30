@@ -13,6 +13,7 @@ public class Timer : MonoBehaviour
     public void StartTimer()
     {
         isRunning = true;
+        time = new TimeSpan(0, 2, 0);
     }
 
     private void Update()
@@ -20,10 +21,10 @@ public class Timer : MonoBehaviour
         if (!isRunning) {
             return;
         }
-        time += new TimeSpan(0, 0, 0, 0, (int) (Time.deltaTime * 1000));
+        time -= new TimeSpan(0, 0, 0, 0, (int) (Time.deltaTime * 1000));
 
-        textTimer.text = time.ToString(@"mm\:ss");
-        if (time.TotalMinutes % 5 == 0) {
+        textTimer.text = $"Till boss spawn: {time:mm\\:ss}";
+        if (time.TotalSeconds <= 0) {
             MajorMarkElapsed.Invoke();
         }
     }

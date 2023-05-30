@@ -7,7 +7,7 @@ using Random = UnityEngine.Random;
 
 namespace Spawners
 {
-    public abstract class Spawner<T> : MonoBehaviour where T : Entity
+    public abstract class Spawner<T> : MonoBehaviour where T : Entity, IAgeChangeable
     {
         public T entityPrefab;
         public Transform entitiesRoot;
@@ -112,6 +112,13 @@ namespace Spawners
             var ent = entitiesRoot.transform.GetComponentsInChildren<T>();
             foreach (var entity in ent) {
                 entity.Health.ChangeHealth(-float.MaxValue);
+            }
+        }
+        
+        public void ChangeAge(AgeType age)
+        {
+            foreach (var entity in spawnedEntities) {
+                entity.ChangeAge(age);
             }
         }
     }

@@ -268,5 +268,7 @@ MonoBehaviour:
   baseMovementSpeed: 0
   baseAttackDamage: 0
   attacksList: []
+  ageViews: []
+  renderer: {fileID: 0}
   spawnPriority: 11
   experienceAmount: 1

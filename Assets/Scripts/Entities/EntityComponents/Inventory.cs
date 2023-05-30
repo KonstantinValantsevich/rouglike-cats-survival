@@ -8,10 +8,11 @@ namespace Entities.EntityComponents
     public class Inventory
     {
         private int level;
-        private int experienceLeftToNextLevel;
+        public int experienceLeftToNextLevel;
         public HashSet<ArtefactType> artefacts = new HashSet<ArtefactType>();
-        public event Action<ArtefactType> artefactCollected = delegate { };
-        public event Action levelIncreased = delegate { };
+        public event Action<ArtefactType> ArtefactCollected = delegate { };
+        public event Action LevelIncreased = delegate { };
+        public event Action OnExperienceRecieved = delegate { };
 
         public Inventory(int level)
         {
@@ -28,8 +29,11 @@ namespace Entities.EntityComponents
 
         public void CollectArtefact(ArtefactType artefactType)
         {
+            if (artefacts.Contains(artefactType)) {
+                return;
+            }
             artefacts.Add(artefactType);
-            artefactCollected.Invoke(artefactType);
+            ArtefactCollected.Invoke(artefactType);
             Debug.Log($"Artefact collected:{artefactType}");
         }
 
@@ -38,11 +42,12 @@ namespace Entities.EntityComponents
             experienceLeftToNextLevel -= experienceAmount;
 
             while (experienceLeftToNextLevel <= 0) {
-                levelIncreased.Invoke();
+                LevelIncreased.Invoke();
                 level++;
                 experienceLeftToNextLevel += GetExperienceToNextLevel(level);
                 Debug.Log($"Level increased: {level}");
             }
+            OnExperienceRecieved.Invoke();
         }
 
         public void SubtractExperience(int experienceAmount)
@@ -62,9 +67,9 @@ namespace Entities.EntityComponents
             return Mathf.RoundToInt(level * (1.75f * level + 5));
         }
 
-        private int GetExperienceToNextLevel(int currentLevel)
+        public int GetExperienceToNextLevel(int currentLevel)
         {
-            return Mathf.RoundToInt(3.5f * currentLevel + 3.25f);
+            return Mathf.RoundToInt(20f * currentLevel + 10f);
         }
     }
 }

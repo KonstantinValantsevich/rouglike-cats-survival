@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Cinemachine;
 using Entities;
 using Spawners;
 using UnityEngine;
@@ -10,6 +11,7 @@ public class Application : MonoBehaviour
     public Boss boss;
     public Timer timer;
     public EnemySpawner enemySpawner;
+    public CinemachineVirtualCamera Camera;
 
     public List<GameObject> ageChangeableListGO;
     private List<IAgeChangeable> ageChangeableList;
@@ -34,7 +36,7 @@ public class Application : MonoBehaviour
 
     private void OnPlayerKilled(Entity player)
     {
-        SceneManager.LoadScene("MainScene");
+        SceneManager.LoadScene("Main Menu");
     }
 
     [ContextMenu("Spawn Boss")]
@@ -42,7 +44,9 @@ public class Application : MonoBehaviour
     {
         enemySpawner.enabled = false;
         enemySpawner.KillAll();
+        timer.PauseTimer();
         var b = Instantiate(boss);
+        Camera.m_Lens.OrthographicSize *= 1.5f;
         b.ChangeAge(currentAge);
         b.Initialise(player);
         var rPos = (Random.insideUnitCircle + Vector2.one) * 10;
@@ -53,9 +57,12 @@ public class Application : MonoBehaviour
     private void BossDefeated(Entity boss)
     {
         if (currentAge == AgeType.Future) {
-            Debug.Log("You Won!");
+            SceneManager.LoadScene("Main Menu");
+            return;
         }
         currentAge++;
+        timer.StartTimer();
+        Camera.m_Lens.OrthographicSize /= 1.5f;
         foreach (var ageChangeable in ageChangeableList) {
             ageChangeable.ChangeAge(currentAge);
         }

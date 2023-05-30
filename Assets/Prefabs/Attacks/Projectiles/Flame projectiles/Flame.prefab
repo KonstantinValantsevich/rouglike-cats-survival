@@ -136,7 +136,7 @@ MonoBehaviour:
   baseHealthChange: 0
   baseLevel: 0
   baseMovementSpeed: 1
-  baseAttackDamage: 1
+  baseAttackDamage: 30
   attacksList: []
   ageViews: []
   renderer: {fileID: 0}

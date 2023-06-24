@@ -1,6 +1,4 @@
-﻿using Entities.EntityComponents;
-
-namespace Entities.Interfaces
+﻿namespace Entities.Interfaces
 {
     public interface IAttackable
     {

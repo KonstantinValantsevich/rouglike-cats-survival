@@ -709,7 +709,7 @@ MonoBehaviour:
   entityPrefab: {fileID: -2109025093765913779, guid: 00884746d6cc9464dbb50c544856d0ad, type: 3}
   entitiesRoot: {fileID: 193748094}
   maxEntities: 100
-  spawnCooldownTime: 0.2
+  spawnCooldownTime: 0.5
   spawnRingRadius: 20
 --- !u!4 &193748094
 Transform:

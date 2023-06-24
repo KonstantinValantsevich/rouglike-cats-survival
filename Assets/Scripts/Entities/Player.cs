@@ -1,5 +1,4 @@
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using Entities.EntityComponents.Attacks;
 using Entities.EntityComponents.Movements;
@@ -21,6 +20,7 @@ namespace Entities
         public ExpBar ExpBar;
         public Vector3 Position => transform.position;
         public TextMeshProUGUI artefactsList;
+
         public Rect CameraRect {
             get {
                 var cameraPosition = mainCamera.transform.position;
@@ -46,9 +46,7 @@ namespace Entities
             playerHealthBar.Initialise(Health);
             ExpBar.Initialise(Inventory);
             levelUpScreen.AbilityChosen += Attacker.AddAttack;
-            Inventory.ArtefactCollected += artefact => {
-                artefactsList.text += $"\n   -{artefact}";
-            };
+            Inventory.ArtefactCollected += artefact => { artefactsList.text += $"\n   -{artefact}"; };
         }
 
         protected override void InitialiseComponents()
@@ -56,7 +54,8 @@ namespace Entities
             base.InitialiseComponents();
 
             Movement = new PlayerMovement(baseMovementSpeed, transform, playerModel, mainCamera);
-            Attacker = new Attacker(attacksList, GetComponentsInChildren<Attack>().ToList(), baseAttackDamage, playerModel, Inventory.artefacts, Player);
+            Attacker = new Attacker(attacksList, GetComponentsInChildren<Attack>().ToList(), baseAttackDamage,
+                playerModel, Inventory.artefacts, Player);
 
             Inventory.LevelIncreased += OnLevelUp;
         }

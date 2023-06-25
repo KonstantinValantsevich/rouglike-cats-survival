@@ -1,3 +1,4 @@
+using Cinemachine;
 using Entities.EntityComponents;
 using Entities.EntityComponents.Movements;
 using Entities.Interfaces;
@@ -7,11 +8,13 @@ namespace Entities
 {
     public class Enemy : Entity
     {
+        public CinemachineImpulseSource impulseSource;
+
         protected override void InitialiseComponents()
         {
             base.InitialiseComponents();
-
             Movement = new FollowPlayerMovement(baseMovementSpeed, transform, transform, Player);
+            EntityKilled += (_) => impulseSource.GenerateImpulse();
         }
 
         protected override void Update()

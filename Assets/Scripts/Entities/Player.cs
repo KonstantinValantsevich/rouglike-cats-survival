@@ -1,5 +1,6 @@
 using System;
 using System.Linq;
+using Cinemachine;
 using Entities.EntityComponents.Attacks;
 using Entities.EntityComponents.Movements;
 using Entities.Interfaces;
@@ -21,6 +22,8 @@ namespace Entities
         public Vector3 Position => transform.position;
         public Transform Transform => transform;
         public TextMeshProUGUI artefactsList;
+
+        public CinemachineImpulseSource ImpulseSource;
 
         public Rect CameraRect {
             get {
@@ -48,6 +51,7 @@ namespace Entities
             ExpBar.Initialise(Inventory);
             levelUpScreen.AbilityChosen += Attacker.AddAttack;
             Inventory.ArtefactCollected += artefact => { artefactsList.text += $"\n   -{artefact}"; };
+            Health.Damaged += (_) => ImpulseSource.GenerateImpulse();
         }
 
         protected override void InitialiseComponents()

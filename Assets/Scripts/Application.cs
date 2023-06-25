@@ -41,6 +41,9 @@ public class Application : MonoBehaviour
         player.gameObject.SetActive(true);
         timer.StartTimer();
         enemySpawner.enabled = true;
+        foreach (var enemy in enemySpawner.spawnedEntities) {
+            enemy.gameObject.SetActive(true);
+        }
     }
 
     private void OnLevelIncreased()

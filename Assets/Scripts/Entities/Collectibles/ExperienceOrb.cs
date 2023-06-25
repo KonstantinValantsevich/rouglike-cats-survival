@@ -9,6 +9,8 @@ namespace Entities.Collectibles
     {
         public int experienceAmount = 3;
         public ParticleSystem buff;
+        public SpriteRenderer sprite;
+        public GameObject aura;
 
         public override void Initialise(IPlayerState player)
         {
@@ -30,9 +32,13 @@ namespace Entities.Collectibles
                 .AppendCallback(() => {
                     buff.time = 0;
                     buff.gameObject.SetActive(true);
+                    sprite.enabled = false;
+                    aura.SetActive(false);
                 }).AppendInterval(0.5f)
                 .AppendCallback(() => {
                     buff.gameObject.SetActive(false);
+                    sprite.enabled = true;
+                    aura.SetActive(true);   
                     KillEntity();
                 });
         }

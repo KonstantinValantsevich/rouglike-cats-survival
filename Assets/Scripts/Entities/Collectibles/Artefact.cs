@@ -1,4 +1,5 @@
 ﻿using System;
+using DG.Tweening;
 using Entities.EntityComponents;
 using Entities.Interfaces;
 using UnityEngine;
@@ -30,9 +31,17 @@ namespace Entities.Collectibles
         [Header("Artefact")]
         public ArtefactType type;
 
+        public ParticleSystem vfx;
+
         public override void Initialise(IPlayerState player)
         {
-            base.Initialise(player);
+            Player = player;
+
+            InitialiseComponents();
+
+            UpdateTickables();
+
+            Health.Damaged += amount => Debug.Log($"Entity: {name} was damaged by {amount} damage");
             if (type != ArtefactType.Random) {
                 return;
             }
@@ -44,6 +53,17 @@ namespace Entities.Collectibles
         public override void CollectItem(Inventory inventory)
         {
             inventory.CollectArtefact(type);
+            
+            transform.SetParent(Player.Transform);
+            transform.DOLocalJump(Random.insideUnitCircle * 5, Random.value, 1, 1).PrependCallback(() => {
+                    vfx.time = 0;
+                    vfx.gameObject.SetActive(true);
+                })
+                .Append(transform.DOLocalMove(Vector3.zero, 0.3f))
+                .AppendCallback(() => {
+                    vfx.gameObject.SetActive(false);
+                    KillEntity();
+                });
         }
     }
 }

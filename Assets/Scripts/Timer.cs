@@ -33,4 +33,9 @@ public class Timer : MonoBehaviour
     {
         isRunning = false;
     }
+
+    public void ContinueTimer()
+    {
+        isRunning = false;
+    }
 }

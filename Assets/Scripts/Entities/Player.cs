@@ -40,6 +40,7 @@ namespace Entities
         }
 
         private Camera mainCamera;
+        public CinemachineVirtualCamera virtCamera;
 
         public override void Initialise(IPlayerState player)
         {
@@ -58,7 +59,7 @@ namespace Entities
         {
             base.InitialiseComponents();
 
-            Movement = new PlayerMovement(baseMovementSpeed, transform, playerModel, mainCamera);
+            Movement = new PlayerMovement(baseMovementSpeed, transform, playerModel, mainCamera, virtCamera);
             Attacker = new Attacker(attacksList, GetComponentsInChildren<Attack>().ToList(), baseAttackDamage,
                 playerModel, Inventory.artefacts, Player);
 

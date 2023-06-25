@@ -39,7 +39,7 @@ public class Application : MonoBehaviour
     private void OnAbilityChoosen(string ability)
     {
         player.gameObject.SetActive(true);
-        timer.StartTimer();
+        timer.ContinueTimer();
         enemySpawner.enabled = true;
         foreach (var enemy in enemySpawner.spawnedEntities) {
             enemy.gameObject.SetActive(true);

@@ -47,14 +47,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shouldKillOnFarFromPlayer: 1
   distanceToBeKilled: 10
-  baseHealth: 0
+  baseHealth: 1
   baseHealthChange: 0
   baseLevel: 0
   baseMovementSpeed: 5
   baseAttackDamage: 15
   attacksList: []
   ageViews: []
-  renderer: {fileID: 0}
+  renderer: {fileID: 4837181531263704386}
+  HitEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  model: {fileID: 0}
   explosionRadius: 8
   explosionDamageMultiplier: 1
   explosionPrefab: {fileID: 6306846879119137203, guid: 4ef5518c094eeb144ad1cc0d034064ee, type: 3}

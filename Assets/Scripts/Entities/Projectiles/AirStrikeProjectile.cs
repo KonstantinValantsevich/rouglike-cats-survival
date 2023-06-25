@@ -1,4 +1,5 @@
-﻿using Entities.EntityComponents.Movements;
+﻿using DG.Tweening;
+using Entities.EntityComponents.Movements;
 using UnityEngine;
 using Vector2 = System.Numerics.Vector2;
 
@@ -13,7 +14,7 @@ namespace Entities.Projectiles
 
         protected override void KillOnTime()
         {
-            Destroy(gameObject, timeToFall);
+            DOVirtual.DelayedCall(timeToFall, () => Health.ChangeHealth(-Health.CurrentHealth));
         }
 
         protected override void InitialiseComponents()

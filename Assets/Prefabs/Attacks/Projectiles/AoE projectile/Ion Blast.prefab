@@ -167,7 +167,11 @@ MonoBehaviour:
   baseAttackDamage: 5
   attacksList: []
   ageViews: []
-  renderer: {fileID: 0}
+  renderer: {fileID: 2216593192239878065}
+  HitEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  model: {fileID: 0}
   explosionRadius: 7
   explosionDamageMultiplier: 1
   explosionPrefab: {fileID: 6306846879119137203, guid: bf12e16e662ed45ef81104b6b71e198c, type: 3}

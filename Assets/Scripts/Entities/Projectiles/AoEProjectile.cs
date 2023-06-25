@@ -1,3 +1,4 @@
+using Entities.Interfaces;
 using UnityEngine;
 
 namespace Entities.Projectiles
@@ -10,7 +11,13 @@ namespace Entities.Projectiles
         public GameObject explosionPrefab;
         public float explosionTime = 0.5f;
 
-        private void OnDestroy()
+        public override void Initialise(IPlayerState player)
+        {
+            base.Initialise(player);
+            Health.HealthReachedMin += OnDestroyed;
+        }
+
+        private void OnDestroyed()
         {
             if (explosionRadius == 0) {
                 return;

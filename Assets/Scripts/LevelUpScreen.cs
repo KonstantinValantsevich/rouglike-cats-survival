@@ -9,6 +9,9 @@ public class LevelUpScreen : MonoBehaviour
     private List<string> abillitiesToChoose;
     public event Action<string> AbilityChosen = delegate { };
     public List<TextMeshProUGUI> buttons;
+    public Animator animator;
+    private readonly int open = Animator.StringToHash("Open");
+    private readonly int close = Animator.StringToHash("Close");
 
     public void Initialize(List<string> abilitiesNames)
     {
@@ -20,7 +23,7 @@ public class LevelUpScreen : MonoBehaviour
             buttons[i].text = abilitiesNames[i];
             buttons[i].transform.parent.gameObject.SetActive(true);
         }
-        gameObject.SetActive(true);
+        animator.SetTrigger(open);
     }
 
     [UsedImplicitly]
@@ -28,6 +31,6 @@ public class LevelUpScreen : MonoBehaviour
     {
         Time.timeScale = 1;
         AbilityChosen.Invoke(abillitiesToChoose[ability]);
-        gameObject.SetActive(false);
+        animator.SetTrigger(close);
     }
 }

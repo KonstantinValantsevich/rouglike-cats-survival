@@ -677,12 +677,12 @@ MonoBehaviour:
   - {fileID: -4553689493238162537, guid: a7a72b7a1ff3c407390a72083c230d3a, type: 3}
   - {fileID: -6245593464707309181, guid: ad5f7b367577048a59ce070c2394b780, type: 3}
   - {fileID: 3526153848389317046, guid: 956ac71b8edec4ef1958a8458c468714, type: 3}
-  - {fileID: -8292682956189974059, guid: 68180a693b3737248836c0d213b890bc, type: 3}
   ageViews: []
   renderer: {fileID: 0}
   playerHealthBar: {fileID: 2980106400167212086}
   playerModel: {fileID: 8697913489630748190}
   levelUpScreen: {fileID: 0}
+  ExpBar: {fileID: 0}
   artefactsList: {fileID: 0}
 --- !u!61 &575861546
 BoxCollider2D:

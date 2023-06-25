@@ -13,7 +13,7 @@ namespace Spawners
         public Transform entitiesRoot;
 
         private ObjectPool<T> objectPool;
-        protected List<T> spawnedEntities;
+        public List<T> spawnedEntities;
 
         public int maxEntities = 5;
 
@@ -50,7 +50,7 @@ namespace Spawners
             entity.Initialise(player);
 
             InitialiseEntity(entity);
-
+            spawnedEntities.Add(entity);
             entity.EntityKilled += ent => objectPool.Release((T) ent);
 
             return entity;
@@ -114,7 +114,7 @@ namespace Spawners
                 entity.Health.ChangeHealth(-float.MaxValue);
             }
         }
-        
+
         public void ChangeAge(AgeType age)
         {
             foreach (var entity in spawnedEntities) {

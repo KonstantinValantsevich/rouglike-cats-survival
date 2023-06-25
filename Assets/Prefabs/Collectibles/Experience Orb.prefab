@@ -271,4 +271,4 @@ MonoBehaviour:
   ageViews: []
   renderer: {fileID: 0}
   spawnPriority: 11
-  experienceAmount: 1
+  experienceAmount: 6

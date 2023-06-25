@@ -28,10 +28,29 @@ public class Application : MonoBehaviour
         }
 
         player.Initialise(player);
+        player.Inventory.LevelIncreased += OnLevelIncreased;
+        player.levelUpScreen.AbilityChosen += OnAbilityChoosen;
 
         player.EntityKilled += OnPlayerKilled;
         timer.StartTimer();
         timer.MajorMarkElapsed += SpawnBoss;
+    }
+
+    private void OnAbilityChoosen(string ability)
+    {
+        player.gameObject.SetActive(true);
+        timer.StartTimer();
+        enemySpawner.enabled = true;
+    }
+
+    private void OnLevelIncreased()
+    {
+        player.gameObject.SetActive(false);
+        enemySpawner.enabled = false;
+        foreach (var enemy in enemySpawner.spawnedEntities) {
+            enemy.gameObject.SetActive(false);
+        }
+        timer.PauseTimer();
     }
 
     private void OnPlayerKilled(Entity player)

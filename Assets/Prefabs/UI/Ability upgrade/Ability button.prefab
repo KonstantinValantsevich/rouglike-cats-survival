@@ -146,6 +146,7 @@ GameObject:
   - component: {fileID: 7405189869701683099}
   - component: {fileID: 5600288939575018619}
   - component: {fileID: 3515892703075676996}
+  - component: {fileID: 6092157609053464623}
   m_Layer: 5
   m_Name: Ability button
   m_TagString: Untagged
@@ -213,6 +214,18 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!225 &6092157609053464623
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1476207523536836634}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &2254624412712574907
 GameObject:
   m_ObjectHideFlags: 0

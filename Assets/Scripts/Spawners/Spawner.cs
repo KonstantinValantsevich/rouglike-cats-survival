@@ -65,6 +65,7 @@ namespace Spawners
         protected virtual void DeactivateEntity(T entity)
         {
             entity.Deactivate();
+            entity.transform.SetParent(entitiesRoot);
         }
 
         protected virtual void InitialiseEntity(T entity)

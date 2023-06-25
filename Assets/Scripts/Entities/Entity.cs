@@ -94,6 +94,11 @@ namespace Entities
             }
         }
 
+        public void KillEntity()
+        {
+            EntityKilled.Invoke(this);
+        }
+
         public void Activate()
         {
             gameObject.SetActive(true);

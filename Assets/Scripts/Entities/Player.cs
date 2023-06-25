@@ -19,6 +19,7 @@ namespace Entities
         public LevelUpScreen levelUpScreen;
         public ExpBar ExpBar;
         public Vector3 Position => transform.position;
+        public Transform Transform => transform;
         public TextMeshProUGUI artefactsList;
 
         public Rect CameraRect {
